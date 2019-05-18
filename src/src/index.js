@@ -11,6 +11,8 @@ class Square extends React.Component {
     };
   }
 
+  onClick() {}
+
   render() {
     return (
       <button
