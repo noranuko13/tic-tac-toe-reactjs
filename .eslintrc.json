@@ -12,6 +12,7 @@
     "react-app/jest"
   ],
   "rules": {
+    "semi": ["error", "never"],
     "quotes": ["error", "single"]
   },
   "plugins": [

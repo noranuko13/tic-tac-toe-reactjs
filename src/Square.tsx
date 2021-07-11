@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 interface Props {
   value: string
@@ -18,4 +18,4 @@ class Square extends React.Component<Props, {}> {
   }
 }
 
-export default Square;
+export default Square

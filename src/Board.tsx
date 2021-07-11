@@ -1,5 +1,5 @@
-import React from 'react';
-import Square from './Square';
+import React from 'react'
+import Square from './Square'
 
 interface Props {
   squares: string[]
@@ -13,7 +13,7 @@ class Board extends React.Component<Props, {}> {
         value={this.props.squares[i]}
         onClick={() => this.props.onClick(i)}
       />
-    );
+    )
   }
 
   render() {
@@ -35,8 +35,8 @@ class Board extends React.Component<Props, {}> {
           {this.renderSquare(8)}
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Board;
+export default Board
