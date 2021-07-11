@@ -11,6 +11,9 @@
     "react-app",
     "react-app/jest"
   ],
+  "rules": {
+    "quotes": ["error", "single"]
+  },
   "plugins": [
     "@typescript-eslint",
     "react"
