@@ -2,27 +2,16 @@ import React from 'react'
 import './style.scss'
 
 interface SquareProps {
-  value: number
-}
-
-interface SquareState {
   value: string
+  onClick: any
 }
 
-export class Square extends React.Component<SquareProps, SquareState> {
-  constructor (props: SquareProps | Readonly<SquareProps>) {
-    super(props)
-
-    this.state = {
-      value: ''
-    }
-  }
-
+export class Square extends React.Component<SquareProps, {}> {
   render () {
     return (
       <button className="square" data-testid="square"
-        onClick={() => { this.setState({ value: 'X' }) }}>
-        {this.state.value}
+        onClick={() => this.props.onClick()}>
+        {this.props.value}
       </button>
     )
   }
