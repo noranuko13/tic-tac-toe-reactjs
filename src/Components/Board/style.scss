@@ -1,0 +1,13 @@
+.board {
+  .status {
+    margin-bottom: 10px;
+  }
+
+  .board-row {
+    &:after {
+      clear: both;
+      content: '';
+      display: table;
+    }
+  }
+}
