@@ -89,3 +89,25 @@ test('Game: status will change.', () => {
   squares[7].click() // O
   expect(status).toHaveTextContent('Winner: X')
 })
+
+test('Game: moves will change.', () => {
+  render(<Game />)
+
+  const getMoves = () => { return screen.getAllByTestId('move') }
+  const squares = screen.getAllByTestId('square')
+  expect(getMoves()[0]).toHaveTextContent('Go to game start')
+
+  squares[0].click() // X
+  expect(getMoves()[1]).toHaveTextContent('Go to move #1')
+
+  squares[1].click() // O
+  expect(getMoves()[2]).toHaveTextContent('Go to move #2')
+
+  squares[3].click() // X
+  squares[4].click() // O
+  squares[6].click() // X
+  expect(getMoves()[5]).toHaveTextContent('Go to move #5')
+
+  squares[7].click() // O
+  expect(getMoves()[6]).toBeUndefined()
+})
