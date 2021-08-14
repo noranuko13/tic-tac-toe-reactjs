@@ -7,5 +7,13 @@ test('Square: render', () => {
 
   const e = screen.getByTestId('square')
   expect(e).toBeInTheDocument()
-  expect(e.textContent).toBe('3')
+  expect(e.textContent).toBe('')
+})
+
+test('Square: onClick', () => {
+  render(<Square value={4} />)
+
+  const e = screen.getByTestId('square')
+  e.click()
+  expect(e.textContent).toBe('X')
 })
