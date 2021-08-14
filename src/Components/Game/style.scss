@@ -1,8 +1,13 @@
 .game {
-  display: flex;
-  flex-direction: row;
+  .game-board {
+    text-align: center;
+  }
 
   .game-info {
-    margin-left: 20px;
+    .moves {
+      button {
+        margin-bottom: 0;
+      }
+    }
   }
 }

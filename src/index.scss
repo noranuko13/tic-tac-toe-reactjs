@@ -1,25 +1,5 @@
-body {
-  margin: 20px;
-  font-size: 14px;
-  font-family: "Century Gothic", Futura, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-ol, ul {
-  padding-left: 30px;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-#errors {
-  background: #c00;
-  color: #fff;
-  display: none;
-  margin: -20px -20px 20px;
-  padding: 20px;
-  white-space: pre-wrap;
+:root {
+  --form-element-spacing-vertical: .25rem;
+  --form-element-spacing-horizontal: .5rem;
+  --spacing: 15px;
 }

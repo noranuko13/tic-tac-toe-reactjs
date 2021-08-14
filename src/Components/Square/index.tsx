@@ -8,11 +8,17 @@ interface SquareProps {
 
 export class Square extends React.Component<SquareProps, {}> {
   render () {
+    const handleKeyPress = (e: React.KeyboardEvent) => {
+      if (e.key === 'Enter') {
+        this.props.onClick()
+      }
+    }
+
     return (
-      <button className="square" data-testid="square"
-        onClick={() => this.props.onClick()}>
+      <div className="contrast outline square" data-testid="square" tabIndex={0}
+        onClick={() => this.props.onClick()} onKeyPress={(e) => handleKeyPress(e)}>
         {this.props.value}
-      </button>
+      </div>
     )
   }
 }

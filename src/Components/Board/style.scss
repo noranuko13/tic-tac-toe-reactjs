@@ -1,13 +1,6 @@
 .board {
-  .status {
-    margin-bottom: 10px;
-  }
-
+  display: inline-block;
   .board-row {
-    &:after {
-      clear: both;
-      content: '';
-      display: table;
-    }
+    display: flex;
   }
 }

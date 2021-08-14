@@ -55,9 +55,12 @@ export class Game extends React.Component<{}, GameState> {
         ? 'Go to move #' + move
         : 'Go to game start'
       return (
-        <li key={move} data-testid="move">
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
-        </li>
+        <tr key={move} data-testid="move">
+          <th scope="row">
+            <button className="secondary" onClick={() => this.jumpTo(move)}>#{move}</button>
+          </th>
+          <td>{desc}</td>
+        </tr>
       )
     })
 
@@ -69,14 +72,18 @@ export class Game extends React.Component<{}, GameState> {
     }
 
     return (
-      <div className="game" data-testid="game">
-        <div className="game-board">
+      <div className="grid game" data-testid="game">
+        <article className="game-board">
+          <h3 className="status" data-testid="status">{status}</h3>
           <Board squares={current.squares} onClick={(i: number) => this.handleClick(i)} />
-        </div>
-        <div className="game-info">
-          <div className="status" data-testid="status">{status}</div>
-          <ol>{moves}</ol>
-        </div>
+        </article>
+        <article className="game-info">
+          <table className="moves" role="grid">
+            <tbody>
+              {moves}
+            </tbody>
+          </table>
+        </article>
       </div>
     )
   }
