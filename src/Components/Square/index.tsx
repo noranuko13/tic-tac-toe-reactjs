@@ -1,11 +1,15 @@
 import React from 'react'
 import './style.scss'
 
-export class Square extends React.Component {
+interface SquareProps {
+  value: number
+}
+
+export class Square extends React.Component<SquareProps, {}> {
   render () {
     return (
       <button className="square" data-testid="square">
-        {/* TODO */}
+        {this.props.value}
       </button>
     )
   }
