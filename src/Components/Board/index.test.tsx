@@ -42,6 +42,32 @@ test('Board: click twice to show O', () => {
   }
 })
 
+test('Board: click on the same square twice does nothing', () => {
+  render(<Board />)
+
+  const squares = screen.getAllByTestId('square')
+  squares[0].click() // X
+  expect(squares[0]).toHaveTextContent('X')
+
+  squares[0].click() // O
+  expect(squares[0]).toHaveTextContent('X')
+  squares[1].click() // O
+  expect(squares[1]).toHaveTextContent('O')
+})
+
+test('Board: the winner is decided, nothing will be done', () => {
+  render(<Board />)
+
+  const squares = screen.getAllByTestId('square')
+  squares[0].click() // X
+  squares[1].click() // O
+  squares[3].click() // X
+  squares[4].click() // O
+  squares[6].click() // X (Winner: X)
+  squares[7].click() // O
+  expect(squares[7]).toHaveTextContent('')
+})
+
 test('Board: status will change.', () => {
   render(<Board />)
 
@@ -54,4 +80,12 @@ test('Board: status will change.', () => {
 
   squares[1].click() // O
   expect(status).toHaveTextContent('Next player: X')
+
+  squares[3].click() // X
+  squares[4].click() // O
+  squares[6].click() // X
+  expect(status).toHaveTextContent('Winner: X')
+
+  squares[7].click() // O
+  expect(status).toHaveTextContent('Winner: X')
 })
