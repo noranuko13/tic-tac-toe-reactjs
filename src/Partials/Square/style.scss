@@ -1,16 +1,18 @@
 @mixin square-size($t3-size: 80px) {
-  height: $t3-size;
-  width: $t3-size;
-  line-height: 1;
   font-size: $t3-size - 10px;
+  height: $t3-size;
+  line-height: 1;
+  width: $t3-size;
 }
 
 .square {
   @include square-size;
+
   border: 1px solid var(--secondary);
 
-  &:hover, &:focus {
-    outline: none;
+  &:hover,
+  &:focus {
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.4) inset;
+    outline: none;
   }
 }
