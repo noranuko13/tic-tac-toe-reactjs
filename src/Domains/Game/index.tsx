@@ -4,7 +4,7 @@ import './style.scss'
 import { calculateWinner } from '../../Services/Decision'
 
 interface GameState {
-  history: { squares: string[] }[]
+  history: { squares: string[], xy: number[] }[]
   stepNumber: number
   xIsNext: boolean
 }
@@ -14,7 +14,8 @@ export class Game extends React.Component<{}, GameState> {
     super(props)
     this.state = {
       history: [{
-        squares: Array(9).fill('')
+        squares: Array(9).fill(''),
+        xy: []
       }],
       stepNumber: 0,
       xIsNext: true
@@ -31,7 +32,8 @@ export class Game extends React.Component<{}, GameState> {
     squares[i] = this.state.xIsNext ? 'X' : 'O'
     this.setState({
       history: history.concat([{
-        squares: squares
+        squares: squares,
+        xy: [Math.floor(i / 3) + 1, (i % 3) + 1]
       }]),
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext
@@ -54,12 +56,14 @@ export class Game extends React.Component<{}, GameState> {
       const desc = move
         ? 'Go to move #' + move
         : 'Go to game start'
+      const xy = step.xy.join(', ') ? `(${step.xy.join(', ')})` : ''
       return (
         <tr key={move}>
           <th scope="row">
             <button className="secondary" data-testid="move" onClick={() => this.jumpTo(move)}>#{move}</button>
           </th>
           <td data-testid="desc">{desc}</td>
+          <td data-testid="xy">{xy}</td>
         </tr>
       )
     })

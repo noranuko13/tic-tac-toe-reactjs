@@ -156,3 +156,30 @@ test('Game: show past moves', () => {
   expect(getMoves()[3]).toHaveTextContent('#3')
   expect(getMoves()[4]).toBeUndefined()
 })
+
+test('Game: display xy coordinates', () => {
+  render(<Game />)
+
+  const squares = screen.getAllByTestId('square')
+  squares[0].click() // X
+  squares[3].click() // O
+  squares[1].click() // X
+  squares[4].click() // O
+  squares[5].click() // X
+  squares[2].click() // O
+  squares[8].click() // X
+  squares[7].click() // O
+  squares[6].click() // X
+
+  const xys = screen.getAllByTestId('xy')
+  expect(xys[0]).toHaveTextContent('')
+  expect(xys[1]).toHaveTextContent('(1, 1)') // #1
+  expect(xys[2]).toHaveTextContent('(2, 1)') // #2
+  expect(xys[3]).toHaveTextContent('(1, 2)') // #3
+  expect(xys[4]).toHaveTextContent('(2, 2)') // #4
+  expect(xys[5]).toHaveTextContent('(2, 3)') // #5
+  expect(xys[6]).toHaveTextContent('(1, 3)') // #6
+  expect(xys[7]).toHaveTextContent('(3, 3)') // #7
+  expect(xys[8]).toHaveTextContent('(3, 2)') // #8
+  expect(xys[9]).toHaveTextContent('(3, 1)') // #9
+})
