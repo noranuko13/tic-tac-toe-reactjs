@@ -115,7 +115,7 @@ test('Game: descs will change.', () => {
 test('Game: moves will change.', () => {
   render(<Game />)
 
-  const getMoves = () => { return screen.getAllByTestId('move') }
+  const getMoves = () => { return screen.getAllByTestId('move-button') }
   const squares = screen.getAllByTestId('square')
   expect(getMoves()[0]).toHaveTextContent('#0')
 
@@ -137,7 +137,7 @@ test('Game: moves will change.', () => {
 test('Game: show past moves', () => {
   render(<Game />)
 
-  const getMoves = () => { return screen.getAllByTestId('move') }
+  const getMoves = () => { return screen.getAllByTestId('move-button') }
   const squares = screen.getAllByTestId('square')
   squares[0].click() // X
   squares[1].click() // O

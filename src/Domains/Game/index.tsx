@@ -2,6 +2,7 @@ import React from 'react'
 import { Board } from '../../Partials/Board'
 import './style.scss'
 import { calculateWinner } from '../../Services/Decision'
+import { Move } from '../../Partials/Move'
 
 interface GameState {
   history: { squares: string[], xy: number[] }[]
@@ -52,23 +53,6 @@ export class Game extends React.Component<{}, GameState> {
     const current = history[this.state.stepNumber]
     const winner = calculateWinner(current.squares)
 
-    const moves = history.map((step, move) => {
-      const desc = move
-        ? 'Go to move #' + move
-        : 'Go to game start'
-      const xy = step.xy.join(', ') ? `(${step.xy.join(', ')})` : ''
-      const active = this.state.stepNumber === move ? 'active' : ''
-      return (
-        <tr key={move} className={active} data-testid="line">
-          <th scope="row">
-            <button className="secondary" data-testid="move" onClick={() => this.jumpTo(move)}>#{move}</button>
-          </th>
-          <td data-testid="desc">{desc}</td>
-          <td data-testid="xy">{xy}</td>
-        </tr>
-      )
-    })
-
     let status
     if (winner) {
       status = 'Winner: ' + winner
@@ -83,11 +67,7 @@ export class Game extends React.Component<{}, GameState> {
           <Board squares={current.squares} onClick={(i: number) => this.handleClick(i)} />
         </article>
         <article className="game-info">
-          <table className="moves" role="grid">
-            <tbody>
-              {moves}
-            </tbody>
-          </table>
+          <Move history={history} stepNumber={this.state.stepNumber} jumpTo={(s: number) => { this.jumpTo(s) }} />
         </article>
       </div>
     )
