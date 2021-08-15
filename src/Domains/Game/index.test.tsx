@@ -200,3 +200,21 @@ test('Game: highlight the current line', () => {
   expect(getLines()[1].classList.contains('active')).toBe(false)
   expect(getLines()[2]).toHaveClass('active')
 })
+
+test('Game: toggle button', () => {
+  render(<Game />)
+
+  const getMoves = () => { return screen.getAllByTestId('move-button') }
+  const squares = screen.getAllByTestId('square')
+  squares[0].click() // X
+  squares[3].click() // O
+  expect(getMoves()[0]).toHaveTextContent('#0')
+  expect(getMoves()[1]).toHaveTextContent('#1')
+  expect(getMoves()[2]).toHaveTextContent('#2')
+
+  const sort = screen.getByTestId('move-sort-button')
+  sort.click()
+  expect(getMoves()[0]).toHaveTextContent('#2')
+  expect(getMoves()[1]).toHaveTextContent('#1')
+  expect(getMoves()[2]).toHaveTextContent('#0')
+})

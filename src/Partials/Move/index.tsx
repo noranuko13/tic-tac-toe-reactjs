@@ -7,9 +7,28 @@ interface MoveProps {
   jumpTo: any
 }
 
-export class Move extends React.Component<MoveProps, {}> {
+interface MoveState {
+  order: string
+}
+
+export class Move extends React.Component<MoveProps, MoveState> {
+  constructor (props: MoveProps | Readonly<MoveProps>) {
+    super(props)
+    this.state = {
+      order: 'asc'
+    }
+  }
+
+  handleClick () {
+    this.setState({
+      order: this.state.order === 'asc' ? 'desc' : 'asc'
+    })
+  }
+
   render () {
-    const moves = this.props.history.map((step, move) => {
+    const history = this.state.order === 'asc' ? this.props.history.slice() : this.props.history.slice().reverse()
+    const moves = history.map((step, index) => {
+      const move = this.state.order === 'asc' ? index : history.length - index - 1
       const desc = move
         ? 'Go to move #' + move
         : 'Go to game start'
@@ -28,6 +47,15 @@ export class Move extends React.Component<MoveProps, {}> {
 
     return (
       <table className="move" data-testid="move" role="grid">
+        <thead>
+          <tr>
+            <th scope="col">
+              <button className="secondary" data-testid="move-sort-button" onClick={() => this.handleClick()}>#</button>
+            </th>
+            <th scope="col">Text</th>
+            <th scope="col">(x, y)</th>
+          </tr>
+        </thead>
         <tbody>
           {moves}
         </tbody>
