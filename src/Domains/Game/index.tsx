@@ -55,11 +55,11 @@ export class Game extends React.Component<{}, GameState> {
         ? 'Go to move #' + move
         : 'Go to game start'
       return (
-        <tr key={move} data-testid="move">
+        <tr key={move}>
           <th scope="row">
-            <button className="secondary" onClick={() => this.jumpTo(move)}>#{move}</button>
+            <button className="secondary" data-testid="move" onClick={() => this.jumpTo(move)}>#{move}</button>
           </th>
-          <td>{desc}</td>
+          <td data-testid="desc">{desc}</td>
         </tr>
       )
     })

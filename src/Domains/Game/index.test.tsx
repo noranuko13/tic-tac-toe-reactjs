@@ -90,24 +90,69 @@ test('Game: status will change.', () => {
   expect(status).toHaveTextContent('Winner: X')
 })
 
+test('Game: descs will change.', () => {
+  render(<Game />)
+
+  const getDescs = () => { return screen.getAllByTestId('desc') }
+  const squares = screen.getAllByTestId('square')
+  expect(getDescs()[0]).toHaveTextContent('Go to game start')
+
+  squares[0].click() // X
+  expect(getDescs()[1]).toHaveTextContent('Go to move #1')
+
+  squares[1].click() // O
+  expect(getDescs()[2]).toHaveTextContent('Go to move #2')
+
+  squares[3].click() // X
+  squares[4].click() // O
+  squares[6].click() // X
+  expect(getDescs()[5]).toHaveTextContent('Go to move #5')
+
+  squares[7].click() // O
+  expect(getDescs()[6]).toBeUndefined()
+})
+
 test('Game: moves will change.', () => {
   render(<Game />)
 
   const getMoves = () => { return screen.getAllByTestId('move') }
   const squares = screen.getAllByTestId('square')
-  expect(getMoves()[0]).toHaveTextContent('Go to game start')
+  expect(getMoves()[0]).toHaveTextContent('#0')
 
   squares[0].click() // X
-  expect(getMoves()[1]).toHaveTextContent('Go to move #1')
+  expect(getMoves()[1]).toHaveTextContent('#1')
 
   squares[1].click() // O
-  expect(getMoves()[2]).toHaveTextContent('Go to move #2')
+  expect(getMoves()[2]).toHaveTextContent('#2')
 
   squares[3].click() // X
   squares[4].click() // O
   squares[6].click() // X
-  expect(getMoves()[5]).toHaveTextContent('Go to move #5')
+  expect(getMoves()[5]).toHaveTextContent('#5')
 
   squares[7].click() // O
   expect(getMoves()[6]).toBeUndefined()
+})
+
+test('Game: show past moves', () => {
+  render(<Game />)
+
+  const getMoves = () => { return screen.getAllByTestId('move') }
+  const squares = screen.getAllByTestId('square')
+  squares[0].click() // X
+  squares[1].click() // O
+  squares[3].click() // X
+  squares[4].click() // O
+  squares[6].click() // X
+
+  getMoves()[2].click()
+  expect(squares[0]).toHaveTextContent('X')
+  expect(squares[1]).toHaveTextContent('O')
+  expect(squares[3]).toHaveTextContent('')
+  expect(squares[4]).toHaveTextContent('')
+  expect(squares[6]).toHaveTextContent('')
+
+  squares[2].click() // X
+  expect(getMoves()[3]).toHaveTextContent('#3')
+  expect(getMoves()[4]).toBeUndefined()
 })

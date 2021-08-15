@@ -8,7 +8,9 @@ test('Decision: return nothing', () => {
 test('Decision: return winner', () => {
   const squares = Array(9).fill('')
   squares[2] = 'X'
+  squares[3] = 'O'
   squares[5] = 'X'
+  squares[6] = 'O'
   squares[8] = 'X'
   expect(calculateWinner(squares)).toBe('X')
 })
