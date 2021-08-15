@@ -1,5 +1,5 @@
 import React from 'react'
-import { Board } from '../Board'
+import { Board } from '../../Partials/Board'
 import './style.scss'
 import { calculateWinner } from '../../Services/Decision'
 
