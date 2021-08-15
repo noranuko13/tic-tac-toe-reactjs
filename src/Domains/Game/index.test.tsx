@@ -183,3 +183,20 @@ test('Game: display xy coordinates', () => {
   expect(xys[8]).toHaveTextContent('(3, 2)') // #8
   expect(xys[9]).toHaveTextContent('(3, 1)') // #9
 })
+
+test('Game: highlight the current line', () => {
+  render(<Game />)
+
+  const squares = screen.getAllByTestId('square')
+  const getLines = () => { return screen.getAllByTestId('line') }
+  expect(getLines()[0]).toHaveClass('active')
+
+  squares[0].click()
+  expect(getLines()[0].classList.contains('active')).toBe(false)
+  expect(getLines()[1]).toHaveClass('active')
+
+  squares[1].click()
+  expect(getLines()[0].classList.contains('active')).toBe(false)
+  expect(getLines()[1].classList.contains('active')).toBe(false)
+  expect(getLines()[2]).toHaveClass('active')
+})

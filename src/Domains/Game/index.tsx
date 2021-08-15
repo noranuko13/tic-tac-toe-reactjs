@@ -57,8 +57,9 @@ export class Game extends React.Component<{}, GameState> {
         ? 'Go to move #' + move
         : 'Go to game start'
       const xy = step.xy.join(', ') ? `(${step.xy.join(', ')})` : ''
+      const active = this.state.stepNumber === move ? 'active' : ''
       return (
-        <tr key={move}>
+        <tr key={move} className={active} data-testid="line">
           <th scope="row">
             <button className="secondary" data-testid="move" onClick={() => this.jumpTo(move)}>#{move}</button>
           </th>
