@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react'
 import { Square } from './index'
 
 test('Square: render', () => {
-  render(<Square value={''} onClick={() => {}} />)
+  render(<Square value={''} onClick={() => {}} active={false} />)
 
   const e = screen.getByTestId('square')
   expect(e).toBeInTheDocument()
@@ -11,7 +11,7 @@ test('Square: render', () => {
 })
 
 test('Square: render X', () => {
-  render(<Square value={'X'} onClick={() => {}} />)
+  render(<Square value={'X'} onClick={() => {}} active={false} />)
 
   const e = screen.getByTestId('square')
   expect(e).toBeInTheDocument()
