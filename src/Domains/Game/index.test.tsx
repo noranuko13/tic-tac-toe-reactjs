@@ -90,26 +90,26 @@ test('Game: status will change.', () => {
   expect(status).toHaveTextContent('Winner: X')
 })
 
-test('Game: descs will change.', () => {
+test('Game: texts will change.', () => {
   render(<Game />)
 
-  const getDescs = () => { return screen.getAllByTestId('desc') }
+  const getTexts = () => { return screen.getAllByTestId('text') }
   const squares = screen.getAllByTestId('square')
-  expect(getDescs()[0]).toHaveTextContent('Go to game start')
+  expect(getTexts()[0]).toHaveTextContent('Go to game start')
 
   squares[0].click() // X
-  expect(getDescs()[1]).toHaveTextContent('Go to move #1')
+  expect(getTexts()[1]).toHaveTextContent('Go to move #1')
 
   squares[1].click() // O
-  expect(getDescs()[2]).toHaveTextContent('Go to move #2')
+  expect(getTexts()[2]).toHaveTextContent('Go to move #2')
 
   squares[3].click() // X
   squares[4].click() // O
   squares[6].click() // X
-  expect(getDescs()[5]).toHaveTextContent('Go to move #5')
+  expect(getTexts()[5]).toHaveTextContent('Go to move #5')
 
   squares[7].click() // O
-  expect(getDescs()[6]).toBeUndefined()
+  expect(getTexts()[6]).toBeUndefined()
 })
 
 test('Game: moves will change.', () => {

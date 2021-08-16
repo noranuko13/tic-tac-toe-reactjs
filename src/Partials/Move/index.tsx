@@ -29,7 +29,7 @@ export class Move extends React.Component<MoveProps, MoveState> {
     const history = this.state.order === 'asc' ? this.props.history.slice() : this.props.history.slice().reverse()
     const moves = history.map((step, index) => {
       const move = this.state.order === 'asc' ? index : history.length - index - 1
-      const desc = move
+      const text = move
         ? 'Go to move #' + move
         : 'Go to game start'
       const xy = step.xy.join(', ') ? `(${step.xy.join(', ')})` : ''
@@ -39,7 +39,7 @@ export class Move extends React.Component<MoveProps, MoveState> {
           <th scope="row">
             <button className="secondary" data-testid="move-button" onClick={() => this.props.jumpTo(move)}>#{move}</button>
           </th>
-          <td data-testid="desc">{desc}</td>
+          <td data-testid="text">{text}</td>
           <td data-testid="xy">{xy}</td>
         </tr>
       )
