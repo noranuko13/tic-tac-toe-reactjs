@@ -9,7 +9,7 @@ interface BoardProps {
 }
 
 export class Board extends React.Component<BoardProps, {}> {
-  renderSquare (i: number, line: number[]) {
+  renderSquare (i: number, line: ReadonlyArray<number>) {
     return <Square key={i} value={this.props.squares[i]} active={line.includes(i)}
       onClick={() => this.props.onClick(i)} />
   }
