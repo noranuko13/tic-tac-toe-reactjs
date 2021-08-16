@@ -218,3 +218,21 @@ test('Game: toggle button', () => {
   expect(getMoves()[1]).toHaveTextContent('#1')
   expect(getMoves()[2]).toHaveTextContent('#0')
 })
+
+test('Game: show draw message', () => {
+  render(<Game />)
+
+  const squares = screen.getAllByTestId('square')
+  squares[0].click() // X
+  squares[3].click() // O
+  squares[1].click() // X
+  squares[4].click() // O
+  squares[5].click() // X
+  squares[2].click() // O
+  squares[8].click() // X
+  squares[7].click() // O
+  squares[6].click() // X
+
+  const status = screen.getByTestId('status')
+  expect(status).toHaveTextContent('It\'s a tie!')
+})

@@ -60,6 +60,10 @@ export class Game extends React.Component<{}, GameState> {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O')
     }
 
+    if (this.state.stepNumber === 9) {
+      status = 'It\'s a tie!'
+    }
+
     return (
       <div className="grid game" data-testid="game">
         <article className="game-board">
