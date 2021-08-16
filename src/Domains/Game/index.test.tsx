@@ -2,6 +2,38 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { Game } from './index'
 
+const getLines = (): HTMLElement[] => {
+  return screen.getAllByTestId('line')
+}
+
+const getMoveButtons = (): HTMLElement[] => {
+  return screen.getAllByTestId('move-button')
+}
+
+const simulateDrawGame = (): HTMLElement[] => {
+  const squares = screen.getAllByTestId('square')
+  squares[0].click() // X
+  squares[3].click() // O
+  squares[1].click() // X
+  squares[4].click() // O
+  squares[5].click() // X
+  squares[2].click() // O
+  squares[8].click() // X
+  squares[7].click() // O
+  squares[6].click() // X
+  return squares
+}
+
+const simulateWinX = (): HTMLElement[] => {
+  const squares = screen.getAllByTestId('square')
+  squares[0].click() // X
+  squares[1].click() // O
+  squares[3].click() // X
+  squares[4].click() // O
+  squares[6].click() // X (Winner: X)
+  return squares
+}
+
 test('Game: render', () => {
   render(<Game />)
 
@@ -58,12 +90,8 @@ test('Game: click on the same square twice does nothing', () => {
 test('Game: the winner is decided, nothing will be done', () => {
   render(<Game />)
 
-  const squares = screen.getAllByTestId('square')
-  squares[0].click() // X
-  squares[1].click() // O
-  squares[3].click() // X
-  squares[4].click() // O
-  squares[6].click() // X (Winner: X)
+  const squares = simulateWinX()
+
   squares[7].click() // O
   expect(squares[7]).toHaveTextContent('')
 })
@@ -115,37 +143,30 @@ test('Game: texts will change.', () => {
 test('Game: moves will change.', () => {
   render(<Game />)
 
-  const getMoves = () => { return screen.getAllByTestId('move-button') }
   const squares = screen.getAllByTestId('square')
-  expect(getMoves()[0]).toHaveTextContent('#0')
+  expect(getMoveButtons()[0]).toHaveTextContent('#0')
 
   squares[0].click() // X
-  expect(getMoves()[1]).toHaveTextContent('#1')
+  expect(getMoveButtons()[1]).toHaveTextContent('#1')
 
   squares[1].click() // O
-  expect(getMoves()[2]).toHaveTextContent('#2')
+  expect(getMoveButtons()[2]).toHaveTextContent('#2')
 
   squares[3].click() // X
   squares[4].click() // O
   squares[6].click() // X
-  expect(getMoves()[5]).toHaveTextContent('#5')
+  expect(getMoveButtons()[5]).toHaveTextContent('#5')
 
   squares[7].click() // O
-  expect(getMoves()[6]).toBeUndefined()
+  expect(getMoveButtons()[6]).toBeUndefined()
 })
 
 test('Game: show past moves', () => {
   render(<Game />)
 
-  const getMoves = () => { return screen.getAllByTestId('move-button') }
-  const squares = screen.getAllByTestId('square')
-  squares[0].click() // X
-  squares[1].click() // O
-  squares[3].click() // X
-  squares[4].click() // O
-  squares[6].click() // X
+  const squares = simulateWinX()
+  getMoveButtons()[2].click()
 
-  getMoves()[2].click()
   expect(squares[0]).toHaveTextContent('X')
   expect(squares[1]).toHaveTextContent('O')
   expect(squares[3]).toHaveTextContent('')
@@ -153,23 +174,15 @@ test('Game: show past moves', () => {
   expect(squares[6]).toHaveTextContent('')
 
   squares[2].click() // X
-  expect(getMoves()[3]).toHaveTextContent('#3')
-  expect(getMoves()[4]).toBeUndefined()
+
+  expect(getMoveButtons()[3]).toHaveTextContent('#3')
+  expect(getMoveButtons()[4]).toBeUndefined()
 })
 
 test('Game: display xy coordinates', () => {
   render(<Game />)
 
-  const squares = screen.getAllByTestId('square')
-  squares[0].click() // X
-  squares[3].click() // O
-  squares[1].click() // X
-  squares[4].click() // O
-  squares[5].click() // X
-  squares[2].click() // O
-  squares[8].click() // X
-  squares[7].click() // O
-  squares[6].click() // X
+  simulateDrawGame()
 
   const xys = screen.getAllByTestId('xy')
   expect(xys[0]).toHaveTextContent('')
@@ -188,50 +201,48 @@ test('Game: highlight the current line', () => {
   render(<Game />)
 
   const squares = screen.getAllByTestId('square')
-  const getLines = () => { return screen.getAllByTestId('line') }
-  expect(getLines()[0]).toHaveClass('active')
+
+  const turn0 = getLines()
+  expect(turn0[0]).toHaveClass('active')
 
   squares[0].click()
-  expect(getLines()[0].classList.contains('active')).toBe(false)
-  expect(getLines()[1]).toHaveClass('active')
+
+  const turn1 = getLines()
+  expect(turn1[0].classList.contains('active')).toBe(false)
+  expect(turn1[1]).toHaveClass('active')
 
   squares[1].click()
-  expect(getLines()[0].classList.contains('active')).toBe(false)
-  expect(getLines()[1].classList.contains('active')).toBe(false)
-  expect(getLines()[2]).toHaveClass('active')
+
+  const turn2 = getLines()
+  expect(turn2[0].classList.contains('active')).toBe(false)
+  expect(turn2[1].classList.contains('active')).toBe(false)
+  expect(turn2[2]).toHaveClass('active')
 })
 
 test('Game: toggle button', () => {
   render(<Game />)
 
-  const getMoves = () => { return screen.getAllByTestId('move-button') }
   const squares = screen.getAllByTestId('square')
   squares[0].click() // X
   squares[3].click() // O
-  expect(getMoves()[0]).toHaveTextContent('#0')
-  expect(getMoves()[1]).toHaveTextContent('#1')
-  expect(getMoves()[2]).toHaveTextContent('#2')
 
-  const sort = screen.getByTestId('move-sort-button')
-  sort.click()
-  expect(getMoves()[0]).toHaveTextContent('#2')
-  expect(getMoves()[1]).toHaveTextContent('#1')
-  expect(getMoves()[2]).toHaveTextContent('#0')
+  const asc = getMoveButtons()
+  expect(asc[0]).toHaveTextContent('#0')
+  expect(asc[1]).toHaveTextContent('#1')
+  expect(asc[2]).toHaveTextContent('#2')
+
+  screen.getByTestId('move-sort-button').click()
+
+  const desc = getMoveButtons()
+  expect(desc[0]).toHaveTextContent('#2')
+  expect(desc[1]).toHaveTextContent('#1')
+  expect(desc[2]).toHaveTextContent('#0')
 })
 
 test('Game: show draw message', () => {
   render(<Game />)
 
-  const squares = screen.getAllByTestId('square')
-  squares[0].click() // X
-  squares[3].click() // O
-  squares[1].click() // X
-  squares[4].click() // O
-  squares[5].click() // X
-  squares[2].click() // O
-  squares[8].click() // X
-  squares[7].click() // O
-  squares[6].click() // X
+  simulateDrawGame()
 
   const status = screen.getByTestId('status')
   expect(status).toHaveTextContent('It\'s a tie!')

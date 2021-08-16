@@ -1,26 +1,46 @@
 import { calculateLine, calculateWinner } from './index'
 
-test('Decision: return nothing', () => {
-  const squares = Array(9).fill('')
-  expect(calculateWinner(squares)).toBe('')
-})
+const initSquares = (): string[] => {
+  return Array(9).fill('')
+}
 
-test('Decision: return winner', () => {
-  const squares = Array(9).fill('')
+const winX = (): string[] => {
+  const squares = initSquares()
   squares[2] = 'X'
   squares[3] = 'O'
   squares[5] = 'X'
   squares[6] = 'O'
   squares[8] = 'X'
-  expect(calculateWinner(squares)).toBe('X')
-})
+  return squares
+}
 
-test('Decision: calculateLine', () => {
-  const squares = Array(9).fill('')
+const winO = (): string[] => {
+  const squares = initSquares()
   squares[2] = 'X'
   squares[3] = 'O'
   squares[5] = 'X'
   squares[6] = 'O'
-  squares[8] = 'X'
-  expect(calculateLine(squares)).toStrictEqual([2, 5, 8])
+  squares[4] = 'X'
+  squares[0] = 'O'
+  return squares
+}
+
+test('Decision: calculateWinner: return nothing', () => {
+  expect(calculateWinner(initSquares())).toBe('')
+})
+
+test('Decision: calculateWinner: return winner X', () => {
+  expect(calculateWinner(winX())).toBe('X')
+})
+
+test('Decision: calculateWinner: return winner O', () => {
+  expect(calculateWinner(winO())).toBe('O')
+})
+
+test('Decision: calculateLine: return nothing', () => {
+  expect(calculateLine(initSquares())).toStrictEqual([])
+})
+
+test('Decision: calculateLine: return line', () => {
+  expect(calculateLine(winX())).toStrictEqual([2, 5, 8])
 })
