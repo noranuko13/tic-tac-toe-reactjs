@@ -3,6 +3,7 @@ import './style.scss'
 
 interface SquareProps {
   value: string
+  active: boolean
   onClick: any
 }
 
@@ -13,9 +14,10 @@ export class Square extends React.Component<SquareProps, {}> {
         this.props.onClick()
       }
     }
+    const className = `contrast outline square${this.props.active ? ' active' : ''}`
 
     return (
-      <div className="contrast outline square" data-testid="square" tabIndex={0}
+      <div className={className} data-testid="square" tabIndex={0}
         onClick={() => this.props.onClick()} onKeyPress={(e) => handleKeyPress(e)}>
         {this.props.value}
       </div>

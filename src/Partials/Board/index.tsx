@@ -1,6 +1,7 @@
 import React from 'react'
 import { Square } from '../Square'
 import './style.scss'
+import { calculateLine } from '../../Services/Decision'
 
 interface BoardProps {
   squares: string[]
@@ -8,12 +9,13 @@ interface BoardProps {
 }
 
 export class Board extends React.Component<BoardProps, {}> {
-  renderSquare (i: number) {
-    return <Square key={i} value={this.props.squares[i]}
+  renderSquare (i: number, line: number[]) {
+    return <Square key={i} value={this.props.squares[i]} active={line.includes(i)}
       onClick={() => this.props.onClick(i)} />
   }
 
   render () {
+    const line = calculateLine(this.props.squares)
     const indexes = [
       [0, 1, 2],
       [3, 4, 5],
@@ -24,7 +26,7 @@ export class Board extends React.Component<BoardProps, {}> {
       return (
         <div key={index} className="board-row">
           {rows.map((row) => {
-            return this.renderSquare(row)
+            return this.renderSquare(row, line)
           })}
         </div>
       )
