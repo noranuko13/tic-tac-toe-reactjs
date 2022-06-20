@@ -33,7 +33,7 @@ export class Game extends React.Component<{}, GameState> {
     squares[i] = this.state.xIsNext ? 'X' : 'O'
     this.setState({
       history: history.concat([{
-        squares: squares,
+        squares,
         xy: [Math.floor(i / 3) + 1, (i % 3) + 1]
       }]),
       stepNumber: history.length,
