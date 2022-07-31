@@ -8,34 +8,32 @@ interface BoardProps {
   onClick: any
 }
 
-export class Board extends React.Component<BoardProps, {}> {
-  renderSquare (i: number, line: ReadonlyArray<number>) {
-    return <Square key={i} value={this.props.squares[i]} active={line.includes(i)}
-      onClick={() => this.props.onClick(i)} />
+export function Board (props: BoardProps) {
+  const renderSquare = (i: number, line: ReadonlyArray<number>) => {
+    return <Square key={i} value={props.squares[i]} active={line.includes(i)}
+      onClick={() => props.onClick(i)} />
   }
 
-  render () {
-    const line = calculateLine(this.props.squares)
-    const indexes = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8]
-    ]
+  const line = calculateLine(props.squares)
+  const indexes = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8]
+  ]
 
-    const squares = indexes.map((rows, index) => {
-      return (
-        <div key={index} className="board-row">
-          {rows.map((row) => {
-            return this.renderSquare(row, line)
-          })}
-        </div>
-      )
-    })
-
+  const squares = indexes.map((rows, index) => {
     return (
-      <div className="board" data-testid="board">
-        {squares}
+      <div key={index} className="board-row">
+        {rows.map((row) => {
+          return renderSquare(row, line)
+        })}
       </div>
     )
-  }
+  })
+
+  return (
+    <div className="board" data-testid="board">
+      {squares}
+    </div>
+  )
 }

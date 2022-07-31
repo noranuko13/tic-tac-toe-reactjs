@@ -7,20 +7,18 @@ interface SquareProps {
   onClick: any
 }
 
-export class Square extends React.Component<SquareProps, {}> {
-  render () {
-    const handleKeyPress = (e: React.KeyboardEvent) => {
-      if (e.key === 'Enter') {
-        this.props.onClick()
-      }
+export function Square (props: SquareProps) {
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      props.onClick()
     }
-    const className = `contrast outline square${this.props.active ? ' active' : ''}`
-
-    return (
-      <div className={className} data-testid="square" tabIndex={0}
-        onClick={() => this.props.onClick()} onKeyPress={(e) => handleKeyPress(e)}>
-        {this.props.value}
-      </div>
-    )
   }
+  const className = `contrast outline square${props.active ? ' active' : ''}`
+
+  return (
+    <div className={className} data-testid="square" tabIndex={0}
+      onClick={() => props.onClick()} onKeyPress={(e) => handleKeyPress(e)}>
+      {props.value}
+    </div>
+  )
 }
