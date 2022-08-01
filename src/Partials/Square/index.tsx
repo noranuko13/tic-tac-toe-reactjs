@@ -4,7 +4,7 @@ import './style.scss'
 interface SquareProps {
   value: string
   active: boolean
-  onClick: any
+  onClick: () => void
 }
 
 export function Square (props: SquareProps) {

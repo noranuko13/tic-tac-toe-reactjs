@@ -5,7 +5,7 @@ import { calculateLine } from '../../Services/Decision'
 
 interface BoardProps {
   squares: string[]
-  onClick: any
+  onClick: (index: number) => void
 }
 
 export function Board (props: BoardProps) {
