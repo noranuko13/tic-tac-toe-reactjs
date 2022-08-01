@@ -8,7 +8,7 @@ interface SquareProps {
 }
 
 export function Square (props: SquareProps) {
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter') {
       props.onClick()
     }
@@ -17,7 +17,7 @@ export function Square (props: SquareProps) {
 
   return (
     <div className={className} data-testid="square" tabIndex={0}
-      onClick={() => props.onClick()} onKeyPress={(e) => handleKeyPress(e)}>
+      onClick={() => props.onClick()} onKeyDown={(e) => handleKeyDown(e)}>
       {props.value}
     </div>
   )
