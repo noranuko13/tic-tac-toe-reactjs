@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import './style.scss'
 
 interface SquareProps {
@@ -13,10 +13,12 @@ export function Square (props: SquareProps) {
       props.onClick()
     }
   }
-  const className = `contrast outline square${props.active ? ' active' : ''}`
+  const activeClassName = useMemo<string>(() => {
+    return `${props.active ? ' active' : ''}`
+  }, [props.active])
 
   return (
-    <div className={className} data-testid="square" tabIndex={0}
+    <div className={`contrast outline square${activeClassName}`} data-testid="square" tabIndex={0}
       onClick={() => props.onClick()} onKeyDown={(e) => handleKeyDown(e)}>
       {props.value}
     </div>
