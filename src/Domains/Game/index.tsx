@@ -34,23 +34,24 @@ export function Game () {
   }
 
   const current = history[stepNumber]
-  const winner = calculateWinner(current.squares)
 
-  let status
-  if (winner) {
-    status = 'Winner: ' + winner
-  } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O')
-  }
+  const statusText = () => {
+    if (stepNumber === 9) {
+      return 'It\'s a tie!'
+    }
 
-  if (stepNumber === 9) {
-    status = 'It\'s a tie!'
+    const winner = calculateWinner(current.squares)
+    if (winner) {
+      return 'Winner: ' + winner
+    }
+
+    return 'Next player: ' + (xIsNext ? 'X' : 'O')
   }
 
   return (
     <div className="grid game" data-testid="game">
       <article className="game-board">
-        <h3 className="status" data-testid="status">{status}</h3>
+        <h3 className="status" data-testid="status">{statusText()}</h3>
         <Board squares={current.squares} onClick={(i: number) => handleClick(i)} />
       </article>
       <article className="game-info">
