@@ -1,10 +1,11 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { Move } from './index'
+import { Squares } from '../../Models/Squares'
 
 test('Move: render', () => {
   render(<Move history={[{
-    squares: Array(9).fill(''),
+    squares: new Squares(),
     xy: []
   }]} stepNumber={0} jumpTo={() => {}} />)
 

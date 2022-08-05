@@ -1,46 +1,59 @@
-import { calculateLine, calculateWinner } from './index'
+import { Squares } from './index'
 
-const initSquares = (): string[] => {
-  return Array(9).fill('')
-}
+const initSquares = new Squares()
 
-const winX = (): string[] => {
-  const squares = initSquares()
-  squares[2] = 'X'
-  squares[3] = 'O'
-  squares[5] = 'X'
-  squares[6] = 'O'
-  squares[8] = 'X'
-  return squares
-}
+const winXSquares = new Squares([
+  '', '', 'X',
+  'O', '', 'X',
+  'O', '', 'X'
+])
 
-const winO = (): string[] => {
-  const squares = initSquares()
-  squares[2] = 'X'
-  squares[3] = 'O'
-  squares[5] = 'X'
-  squares[6] = 'O'
-  squares[4] = 'X'
-  squares[0] = 'O'
-  return squares
-}
+const winOSquares = new Squares([
+  'O', '', 'X',
+  'O', 'X', 'X',
+  'O', '', ''
+])
+
+test('Squares: clone', () => {
+  const origin = new Squares(['A', '', '', '', '', '', '', '', ''])
+  const cloned = origin.clone()
+  cloned.setSquare(0, 'X')
+  expect(origin.getSquare(0)).toBe('A')
+  expect(cloned.getSquare(0)).toBe('X')
+})
+
+test('Squares: getSquare', () => {
+  expect(winOSquares.getSquare(1)).toBe('')
+  expect(winOSquares.getSquare(0)).toBe('O')
+  expect(winOSquares.getSquare(4)).toBe('X')
+})
+
+test('Squares: setSquare', () => {
+  const squares = new Squares(['A', 'B', 'C', '', '', '', '', '', ''])
+  squares.setSquare(0, 'X')
+  squares.setSquare(1, 'Y')
+  squares.setSquare(2, 'Z')
+  expect(squares.getSquare(0)).toBe('X')
+  expect(squares.getSquare(1)).toBe('Y')
+  expect(squares.getSquare(2)).toBe('Z')
+})
 
 test('Squares: calculateWinner: return nothing', () => {
-  expect(calculateWinner(initSquares())).toBe('')
+  expect(initSquares.calculateWinner()).toBe('')
 })
 
 test('Squares: calculateWinner: return winner X', () => {
-  expect(calculateWinner(winX())).toBe('X')
+  expect(winXSquares.calculateWinner()).toBe('X')
 })
 
 test('Squares: calculateWinner: return winner O', () => {
-  expect(calculateWinner(winO())).toBe('O')
+  expect(winOSquares.calculateWinner()).toBe('O')
 })
 
 test('Squares: calculateLine: return nothing', () => {
-  expect(calculateLine(initSquares())).toStrictEqual([])
+  expect(initSquares.calculateLine()).toStrictEqual([])
 })
 
 test('Squares: calculateLine: return line', () => {
-  expect(calculateLine(winX())).toStrictEqual([2, 5, 8])
+  expect(winXSquares.calculateLine()).toStrictEqual([2, 5, 8])
 })
