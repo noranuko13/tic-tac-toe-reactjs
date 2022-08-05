@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Board } from '../../Partials/Board'
 import './style.scss'
-import { calculateWinner } from '../../Services/Decision'
+import { calculateWinner } from '../../Models/Squares'
 import { Move } from '../../Partials/Move'
 
 export function Game () {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Square } from '../Square'
 import './style.scss'
-import { calculateLine } from '../../Services/Decision'
+import { calculateLine } from '../../Models/Squares'
 import { COLUMNS } from '../../constants'
 
 interface BoardProps {

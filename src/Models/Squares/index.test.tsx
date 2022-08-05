@@ -25,22 +25,22 @@ const winO = (): string[] => {
   return squares
 }
 
-test('Decision: calculateWinner: return nothing', () => {
+test('Squares: calculateWinner: return nothing', () => {
   expect(calculateWinner(initSquares())).toBe('')
 })
 
-test('Decision: calculateWinner: return winner X', () => {
+test('Squares: calculateWinner: return winner X', () => {
   expect(calculateWinner(winX())).toBe('X')
 })
 
-test('Decision: calculateWinner: return winner O', () => {
+test('Squares: calculateWinner: return winner O', () => {
   expect(calculateWinner(winO())).toBe('O')
 })
 
-test('Decision: calculateLine: return nothing', () => {
+test('Squares: calculateLine: return nothing', () => {
   expect(calculateLine(initSquares())).toStrictEqual([])
 })
 
-test('Decision: calculateLine: return line', () => {
+test('Squares: calculateLine: return line', () => {
   expect(calculateLine(winX())).toStrictEqual([2, 5, 8])
 })
