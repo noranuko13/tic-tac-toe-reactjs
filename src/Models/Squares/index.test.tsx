@@ -14,6 +14,11 @@ const winOSquares = new Squares([
   'O', '', ''
 ])
 
+test('Squares: constructor: throw RangeError', () => {
+  expect(() => new Squares(Array(1).fill(''))).toThrow('The length of squares is 9')
+  expect(() => new Squares(Array(10).fill(''))).toThrow('The length of squares is 9')
+})
+
 test('Squares: clone', () => {
   const origin = new Squares(['A', '', '', '', '', '', '', '', ''])
   const cloned = origin.clone()

@@ -4,6 +4,10 @@ export class Squares {
   squares: string[]
 
   constructor (squares: string[] = Array(9).fill('')) {
+    if (squares.length !== 9) {
+      throw new RangeError('The length of squares is 9')
+    }
+
     this.squares = squares
   }
 
