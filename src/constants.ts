@@ -1,4 +1,4 @@
-export const LINES: ReadonlyArray<number>[] = [
+export const VICTORY_LINES: ReadonlyArray<number>[] = [
   [0, 1, 2],
   [3, 4, 5],
   [6, 7, 8],
@@ -9,7 +9,7 @@ export const LINES: ReadonlyArray<number>[] = [
   [2, 4, 6]
 ]
 
-export const COLUMNS: number[][] = [
+export const BOARD_COLUMNS: number[][] = [
   [0, 1, 2],
   [3, 4, 5],
   [6, 7, 8]

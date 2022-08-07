@@ -4,7 +4,7 @@ import { Move } from './index'
 import { Squares } from '../../Models/Squares'
 
 test('Move: render', () => {
-  render(<Move history={[{
+  render(<Move histories={[{
     squares: new Squares(),
     xy: []
   }]} stepNumber={0} jumpTo={() => {}} />)

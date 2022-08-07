@@ -5,7 +5,7 @@ import { Squares } from '../../Models/Squares'
 import { Move } from '../../Partials/Move'
 
 export function Game () {
-  const [history, setHistory] = useState<{ squares: Squares, xy: number[] }[]>([{
+  const [histories, setHistories] = useState<{ squares: Squares, xy: number[] }[]>([{
     squares: new Squares(),
     xy: []
   }])
@@ -13,13 +13,13 @@ export function Game () {
   const [xIsNext, setXIsNext] = useState<boolean>(true)
 
   const handleClick = (i: number) => {
-    const slicedHistory = history.slice(0, stepNumber + 1)
+    const slicedHistory = histories.slice(0, stepNumber + 1)
     const currentSquares = slicedHistory[slicedHistory.length - 1].squares.clone()
-    if (currentSquares.calculateWinner() || currentSquares.getSquare(i)) {
+    if (currentSquares.winner() || currentSquares.getSquare(i)) {
       return
     }
     currentSquares.setSquare(i, xIsNext ? 'X' : 'O')
-    setHistory(slicedHistory.concat([{
+    setHistories(slicedHistory.concat([{
       squares: currentSquares,
       xy: [Math.floor(i / 3) + 1, (i % 3) + 1]
     }]))
@@ -32,14 +32,14 @@ export function Game () {
     setXIsNext((step % 2) === 0)
   }
 
-  const currentSquares = history[stepNumber].squares
+  const currentSquares = histories[stepNumber].squares
 
   const statusText = () => {
     if (stepNumber === 9) {
       return 'It\'s a tie!'
     }
 
-    const winner = currentSquares.calculateWinner()
+    const winner = currentSquares.winner()
     if (winner) {
       return 'Winner: ' + winner
     }
@@ -54,7 +54,7 @@ export function Game () {
         <Board squares={currentSquares} onClick={(i: number) => handleClick(i)} />
       </article>
       <article className="game-info">
-        <Move history={history} stepNumber={stepNumber} jumpTo={(s: number) => { jumpTo(s) }} />
+        <Move histories={histories} stepNumber={stepNumber} jumpTo={(s: number) => { jumpTo(s) }} />
       </article>
     </div>
   )

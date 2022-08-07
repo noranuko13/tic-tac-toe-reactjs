@@ -1,4 +1,4 @@
-import { LINES } from '../../constants'
+import { VICTORY_LINES } from '../../constants'
 
 export class Squares {
   squares: string[]
@@ -23,25 +23,25 @@ export class Squares {
     this.squares[index] = square
   }
 
-  calculateWinner (): string {
+  winner (): string {
     const index = this.indexOfWinner()
     if (index !== -1) {
-      return this.squares[LINES[index][0]]
+      return this.squares[VICTORY_LINES[index][0]]
     }
     return ''
   }
 
-  calculateLine (): ReadonlyArray<number> {
+  victoryLine (): ReadonlyArray<number> {
     const index = this.indexOfWinner()
     if (index !== -1) {
-      return LINES[index]
+      return VICTORY_LINES[index]
     }
     return []
   }
 
   private indexOfWinner (): number {
-    for (let i = 0; i < LINES.length; i++) {
-      const [a, b, c] = LINES[i]
+    for (let i = 0; i < VICTORY_LINES.length; i++) {
+      const [a, b, c] = VICTORY_LINES[i]
       if (this.squares[a] && this.squares[a] === this.squares[b] && this.squares[a] === this.squares[c]) {
         return i
       }

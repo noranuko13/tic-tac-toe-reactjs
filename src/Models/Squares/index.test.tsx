@@ -43,22 +43,22 @@ test('Squares: setSquare', () => {
   expect(squares.getSquare(2)).toBe('Z')
 })
 
-test('Squares: calculateWinner: return nothing', () => {
-  expect(initSquares.calculateWinner()).toBe('')
+test('Squares: winner: return nothing', () => {
+  expect(initSquares.winner()).toBe('')
 })
 
-test('Squares: calculateWinner: return winner X', () => {
-  expect(winXSquares.calculateWinner()).toBe('X')
+test('Squares: winner: return winner X', () => {
+  expect(winXSquares.winner()).toBe('X')
 })
 
-test('Squares: calculateWinner: return winner O', () => {
-  expect(winOSquares.calculateWinner()).toBe('O')
+test('Squares: winner: return winner O', () => {
+  expect(winOSquares.winner()).toBe('O')
 })
 
-test('Squares: calculateLine: return nothing', () => {
-  expect(initSquares.calculateLine()).toStrictEqual([])
+test('Squares: victoryLine: return nothing', () => {
+  expect(initSquares.victoryLine()).toStrictEqual([])
 })
 
-test('Squares: calculateLine: return line', () => {
-  expect(winXSquares.calculateLine()).toStrictEqual([2, 5, 8])
+test('Squares: victoryLine: return line', () => {
+  expect(winXSquares.victoryLine()).toStrictEqual([2, 5, 8])
 })

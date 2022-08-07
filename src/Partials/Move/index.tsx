@@ -3,7 +3,7 @@ import './style.scss'
 import { Squares } from '../../Models/Squares'
 
 interface MoveProps {
-  history: { squares: Squares, xy: number[] }[]
+  histories: { squares: Squares, xy: number[] }[]
   stepNumber: number
   jumpTo: any
 }
@@ -15,9 +15,9 @@ export function Move (props: MoveProps) {
     setOrder(order === 'asc' ? 'desc' : 'asc')
   }
 
-  const history = order === 'asc' ? props.history.slice() : props.history.slice().reverse()
-  const moves = history.map((step, index) => {
-    const move = order === 'asc' ? index : history.length - index - 1
+  const histories = order === 'asc' ? props.histories.slice() : props.histories.slice().reverse()
+  const moves = histories.map((step, index) => {
+    const move = order === 'asc' ? index : histories.length - index - 1
     const text = move
       ? 'Go to move #' + move
       : 'Go to game start'
