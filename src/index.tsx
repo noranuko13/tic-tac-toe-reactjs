@@ -1,10 +1,13 @@
 import React from 'react'
-import { createRoot } from 'react-dom/client'
+import ReactDOM from 'react-dom/client'
 import './index.scss'
 import reportWebVitals from './reportWebVitals'
 import { Game } from './Domains/Game'
 
-createRoot(document.getElementById('root')!).render(
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+)
+root.render(
   <React.StrictMode>
     <Game />
   </React.StrictMode>
