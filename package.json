@@ -1,5 +1,5 @@
 {
-  "name": "react-tutorial",
+  "name": "tic-tac-toe-reactjs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -21,7 +21,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://noranuko13.github.io/react-tutorial",
+  "homepage": "https://noranuko13.github.io/tic-tac-toe-reactjs",
   "engines": {
     "node": "18.14.2",
     "npm": "9.5.0"

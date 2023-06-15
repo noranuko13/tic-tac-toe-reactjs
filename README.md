@@ -1,4 +1,4 @@
-# react-tutorial
+# tic-tac-toe-reactjs
 
 
 ## Links
