@@ -47,12 +47,12 @@ export function Game () {
   }
 
   return (
-    <div className="grid game" data-testid="game">
-      <article className="game-board">
-        <h3 className="status" data-testid="status">{statusText()}</h3>
+    <div data-testid="game">
+      <article>
+        <h3 data-testid="status">{statusText()}</h3>
         <Board squares={currentSquares} onClick={(i: number) => handleClick(i)} />
       </article>
-      <article className="game-info">
+      <article>
         <Move histories={histories} stepNumber={stepNumber} jumpTo={(s: number) => { jumpTo(s) }} />
       </article>
     </div>

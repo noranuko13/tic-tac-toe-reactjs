@@ -25,7 +25,7 @@ export function Move (props: MoveProps) {
     return (
       <tr key={move} className={active} data-testid="line">
         <th scope="row">
-          <button className="secondary" data-testid="move-button" onClick={() => props.jumpTo(move)}>#{move}</button>
+          <button data-testid="move-button" onClick={() => props.jumpTo(move)}>#{move}</button>
         </th>
         <td data-testid="text">{text}</td>
         <td data-testid="xy">{xy}</td>
@@ -34,11 +34,11 @@ export function Move (props: MoveProps) {
   })
 
   return (
-    <table className="move" data-testid="move" role="grid">
+    <table data-testid="move" role="grid">
       <thead>
         <tr>
           <th scope="col">
-            <button className="secondary" data-testid="move-sort-button" onClick={() => handleClick()}>#</button>
+            <button data-testid="move-sort-button" onClick={() => handleClick()}>#</button>
           </th>
           <th scope="col">Text</th>
           <th scope="col">(x, y)</th>

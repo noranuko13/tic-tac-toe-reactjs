@@ -17,7 +17,7 @@ export function Square (props: SquareProps) {
   }, [props.active])
 
   return (
-    <div className={`contrast outline square${activeClassName}`} data-testid="square" tabIndex={0}
+    <div className={activeClassName} data-testid="square" tabIndex={0}
       onClick={() => props.onClick()} onKeyDown={(e) => handleKeyDown(e)}>
       {props.value}
     </div>

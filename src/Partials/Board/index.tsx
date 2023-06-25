@@ -11,7 +11,7 @@ interface BoardProps {
 export function Board (props: BoardProps) {
   const squares = BOARD_COLUMNS.map((rows, index) => {
     return (
-      <div key={index} className="board-row">
+      <div key={index}>
         {rows.map((row) => {
           return <Square key={row} value={props.squares.getSquare(row)}
             active={props.squares.victoryLine().includes(row)} onClick={() => props.onClick(row)} />
@@ -21,7 +21,7 @@ export function Board (props: BoardProps) {
   })
 
   return (
-    <div className="board" data-testid="board">
+    <div data-testid="board">
       {squares}
     </div>
   )
