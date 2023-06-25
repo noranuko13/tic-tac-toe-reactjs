@@ -46,15 +46,27 @@ export function Game () {
     return 'Next player: ' + (xIsNext ? 'X' : 'O')
   }
 
+  const bgStyle: string = 'bg-stone-200 text-stone-950'
+  const h1Style: string = 'font-semibold italic'
+
   return (
-    <div data-testid="game">
-      <article>
-        <h3 data-testid="status">{statusText()}</h3>
-        <Board squares={currentSquares} onClick={(i: number) => handleClick(i)} />
-      </article>
-      <article>
-        <Move histories={histories} stepNumber={stepNumber} jumpTo={(s: number) => { jumpTo(s) }} />
-      </article>
+    <div className={`h-screen ${bgStyle}`}>
+      <div className="container mx-auto max-w-lg py-5">
+        <header className="pb-5 text-center">
+          <h1 className={`border-t-4 border-b-4 border-double border-stone-400 py-1 text-xl ${h1Style}`}>Tic Tac Toe</h1>
+        </header>
+        <main data-testid="game" className="pb-4 flex flex-col sm:flex-row">
+          <article className="sm:w-2/5 pb-3 text-center">
+            <h3 data-testid="status">{statusText()}</h3>
+            <Board squares={currentSquares} onClick={(i) => handleClick(i)} />
+          </article>
+          <article className="sm:w-3/5 pb-2">
+            <Move histories={histories} stepNumber={stepNumber} jumpTo={(s: number) => { jumpTo(s) }} />
+          </article>
+        </main>
+        <footer className="border-t-4 border-double border-stone-400">
+        </footer>
+      </div>
     </div>
   )
 }

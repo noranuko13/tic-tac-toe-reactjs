@@ -21,7 +21,7 @@ export function Board (props: BoardProps) {
   })
 
   return (
-    <div data-testid="board">
+    <div data-testid="board" className="flex justify-center">
       {squares}
     </div>
   )
