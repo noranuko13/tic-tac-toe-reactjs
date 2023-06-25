@@ -3,15 +3,15 @@ import { Squares } from './index'
 const initSquares = new Squares()
 
 const winXSquares = new Squares([
-  '', '', 'X',
-  'O', '', 'X',
-  'O', '', 'X'
+  ...['', '', 'X'],
+  ...['O', '', 'X'],
+  ...['O', '', 'X']
 ])
 
 const winOSquares = new Squares([
-  'O', '', 'X',
-  'O', 'X', 'X',
-  'O', '', ''
+  ...['O', '', 'X'],
+  ...['O', 'X', 'X'],
+  ...['O', '', '']
 ])
 
 test('Squares: constructor: throw RangeError', () => {
@@ -20,7 +20,11 @@ test('Squares: constructor: throw RangeError', () => {
 })
 
 test('Squares: clone', () => {
-  const origin = new Squares(['A', '', '', '', '', '', '', '', ''])
+  const origin = new Squares([
+    ...['A', '', ''],
+    ...['', '', ''],
+    ...['', '', '']
+  ])
   const cloned = origin.clone()
   cloned.setSquare(0, 'X')
   expect(origin.getSquare(0)).toBe('A')
@@ -34,7 +38,11 @@ test('Squares: getSquare', () => {
 })
 
 test('Squares: setSquare', () => {
-  const squares = new Squares(['A', 'B', 'C', '', '', '', '', '', ''])
+  const squares = new Squares([
+    ...['A', 'B', 'C'],
+    ...['', '', ''],
+    ...['', '', '']
+  ])
   squares.setSquare(0, 'X')
   squares.setSquare(1, 'Y')
   squares.setSquare(2, 'Z')
