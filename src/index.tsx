@@ -4,6 +4,7 @@ import './index.css'
 import reportWebVitals from './reportWebVitals'
 import { Game } from './Domains/Game'
 
+// prettier-ignore
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 )
