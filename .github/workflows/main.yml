@@ -19,7 +19,7 @@ jobs:
           node-version: '18.14.2'
           cache: 'npm'
       - run: npm ci
-      - run: npm run lint
+      - run: npm run style:ci
       - run: npm test
         env:
           CI: true

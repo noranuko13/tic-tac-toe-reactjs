@@ -7,7 +7,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.{ts,tsx}"
+    "style:fix": "prettier --write . && eslint src/**/*.{ts,tsx} --fix",
+    "style:ci": "prettier --check . && eslint src/**/*.{ts,tsx}"
   },
   "homepage": "https://noranuko13.github.io/tic-tac-toe-reactjs",
   "engines": {

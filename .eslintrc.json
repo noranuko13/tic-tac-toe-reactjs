@@ -6,7 +6,8 @@
   },
   "extends": [
     "plugin:react/recommended",
-    "standard"
+    "standard",
+    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -22,8 +23,7 @@
   ],
   "rules": {
     "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": ["error"],
-    "indent": ["error", 2]
+    "@typescript-eslint/no-use-before-define": ["error"]
   },
   "settings": {
     "react": {
