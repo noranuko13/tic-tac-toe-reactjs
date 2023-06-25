@@ -121,7 +121,9 @@ test('Game: status will change.', () => {
 test('Game: texts will change.', () => {
   render(<Game />)
 
-  const getTexts = () => { return screen.getAllByTestId('text') }
+  const getTexts = () => {
+    return screen.getAllByTestId('text')
+  }
   const squares = screen.getAllByTestId('square')
   expect(getTexts()[0]).toHaveTextContent('Go to game start')
 
@@ -245,5 +247,5 @@ test('Game: show draw message', () => {
   simulateDrawGame()
 
   const status = screen.getByTestId('status')
-  expect(status).toHaveTextContent('It\'s a tie!')
+  expect(status).toHaveTextContent("It's a tie!")
 })

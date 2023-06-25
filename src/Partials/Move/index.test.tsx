@@ -4,10 +4,18 @@ import { Move } from './index'
 import { Squares } from '../../Models/Squares'
 
 test('Move: render', () => {
-  render(<Move histories={[{
-    squares: new Squares(),
-    xy: []
-  }]} stepNumber={0} jumpTo={() => {}} />)
+  render(
+    <Move
+      histories={[
+        {
+          squares: new Squares(),
+          xy: [],
+        },
+      ]}
+      stepNumber={0}
+      jumpTo={() => {}}
+    />
+  )
 
   const e = screen.getByTestId('move')
   expect(e).toBeInTheDocument()

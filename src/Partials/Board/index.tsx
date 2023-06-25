@@ -8,13 +8,19 @@ interface BoardProps {
   onClick: (index: number) => void
 }
 
-export function Board (props: BoardProps) {
+export function Board(props: BoardProps) {
   const squares = BOARD_COLUMNS.map((rows, index) => {
     return (
       <div key={index}>
         {rows.map((row) => {
-          return <Square key={row} value={props.squares.getSquare(row)}
-            active={props.squares.victoryLine().includes(row)} onClick={() => props.onClick(row)} />
+          return (
+            <Square
+              key={row}
+              value={props.squares.getSquare(row)}
+              active={props.squares.victoryLine().includes(row)}
+              onClick={() => props.onClick(row)}
+            />
+          )
         })}
       </div>
     )
