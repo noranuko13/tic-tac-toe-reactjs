@@ -1,6 +1,5 @@
 import React from 'react'
 import { Square } from '../Square'
-import './style.scss'
 import { Squares } from '../../Models/Squares'
 import { BOARD_COLUMNS } from '../../constants'
 

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import './style.scss'
 import { Squares } from '../../Models/Squares'
 
 interface MoveProps {

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Board } from '../../Partials/Board'
-import './style.scss'
 import { Squares } from '../../Models/Squares'
 import { Move } from '../../Partials/Move'
 
