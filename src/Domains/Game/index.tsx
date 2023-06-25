@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Board } from '../../Partials/Board'
 import { Squares } from '../../Models/Squares'
 import { Move } from '../../Partials/Move'
+import { Trans } from '../../Elements'
 
 export function Game() {
   const [histories, setHistories] = useState<
@@ -65,7 +66,7 @@ export function Game() {
           <h1
             className={`border-t-4 border-b-4 border-double border-stone-400 py-1 text-xl ${h1Style}`}
           >
-            Tic Tac Toe
+            <Trans text={'title'} />
           </h1>
         </header>
         <main data-testid="game" className="pb-4 flex flex-col sm:flex-row">
