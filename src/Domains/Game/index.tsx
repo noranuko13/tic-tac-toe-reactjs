@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import { Board } from '../../Partials/Board'
-import { Squares } from '../../Models/Squares'
+import { SquareList } from '../../Models/SquareList'
 import { Move } from '../../Partials/Move'
 import { Trans } from '../../Elements'
 
 export function Game() {
   const [histories, setHistories] = useState<
-    { squares: Squares; xy: number[] }[]
+    { squareList: SquareList; xy: number[] }[]
   >([
     {
-      squares: new Squares(),
+      squareList: new SquareList(),
       xy: [],
     },
   ])
@@ -18,16 +18,16 @@ export function Game() {
 
   const handleClick = (i: number) => {
     const slicedHistory = histories.slice(0, stepNumber + 1)
-    const currentSquares =
-      slicedHistory[slicedHistory.length - 1].squares.clone()
-    if (currentSquares.winner() || currentSquares.getSquare(i)) {
+    const currentSquareList =
+      slicedHistory[slicedHistory.length - 1].squareList.clone()
+    if (currentSquareList.winner() || currentSquareList.getSquare(i)) {
       return
     }
-    currentSquares.setSquare(i, xIsNext ? 'X' : 'O')
+    currentSquareList.setSquare(i, xIsNext ? 'X' : 'O')
     setHistories(
       slicedHistory.concat([
         {
-          squares: currentSquares,
+          squareList: currentSquareList,
           xy: [Math.floor(i / 3) + 1, (i % 3) + 1],
         },
       ])
@@ -41,14 +41,14 @@ export function Game() {
     setXIsNext(step % 2 === 0)
   }
 
-  const currentSquares = histories[stepNumber].squares
+  const currentSquareList = histories[stepNumber].squareList
 
   const statusText = () => {
     if (stepNumber === 9) {
       return "It's a tie!"
     }
 
-    const winner = currentSquares.winner()
+    const winner = currentSquareList.winner()
     if (winner) {
       return 'Winner: ' + winner
     }
@@ -72,7 +72,10 @@ export function Game() {
         <main data-testid="game" className="pb-4 flex flex-col sm:flex-row">
           <article className="sm:w-2/5 pb-3 text-center">
             <h3 data-testid="status">{statusText()}</h3>
-            <Board squares={currentSquares} onClick={(i) => handleClick(i)} />
+            <Board
+              squareList={currentSquareList}
+              onClick={(i) => handleClick(i)}
+            />
           </article>
           <article className="sm:w-3/5 pb-2">
             <Move

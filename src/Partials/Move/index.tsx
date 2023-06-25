@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Squares } from '../../Models/Squares'
+import { SquareList } from '../../Models/SquareList'
 
 interface MoveProps {
-  histories: { squares: Squares; xy: number[] }[]
+  histories: { squareList: SquareList; xy: number[] }[]
   stepNumber: number
   jumpTo: any
 }

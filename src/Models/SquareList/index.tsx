@@ -1,6 +1,6 @@
 import { VICTORY_LINES } from '../../constants'
 
-export class Squares {
+export class SquareList {
   squares: string[]
 
   constructor(squares: string[] = Array(9).fill('')) {
@@ -11,8 +11,8 @@ export class Squares {
     this.squares = squares
   }
 
-  clone(): Squares {
-    return new Squares(this.squares.slice())
+  clone(): SquareList {
+    return new SquareList(this.squares.slice())
   }
 
   getSquare(index: number): string {

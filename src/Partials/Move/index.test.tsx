@@ -1,14 +1,14 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { Move } from './index'
-import { Squares } from '../../Models/Squares'
+import { SquareList } from '../../Models/SquareList'
 
 test('Move: render', () => {
   render(
     <Move
       histories={[
         {
-          squares: new Squares(),
+          squareList: new SquareList(),
           xy: [],
         },
       ]}

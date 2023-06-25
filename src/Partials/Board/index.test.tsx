@@ -1,10 +1,10 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { Board } from './index'
-import { Squares } from '../../Models/Squares'
+import { SquareList } from '../../Models/SquareList'
 
 test('Board: render', () => {
-  render(<Board squares={new Squares()} onClick={() => {}} />)
+  render(<Board squareList={new SquareList()} onClick={() => {}} />)
 
   const e = screen.getByTestId('board')
   expect(e).toBeInTheDocument()

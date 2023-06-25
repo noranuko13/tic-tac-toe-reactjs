@@ -1,10 +1,10 @@
 import React from 'react'
 import { Square } from '../Square'
-import { Squares } from '../../Models/Squares'
+import { SquareList } from '../../Models/SquareList'
 import { BOARD_COLUMNS } from '../../constants'
 
 interface BoardProps {
-  squares: Squares
+  squareList: SquareList
   onClick: (index: number) => void
 }
 
@@ -16,8 +16,8 @@ export function Board(props: BoardProps) {
           return (
             <Square
               key={row}
-              value={props.squares.getSquare(row)}
-              active={props.squares.victoryLine().includes(row)}
+              value={props.squareList.getSquare(row)}
+              active={props.squareList.victoryLine().includes(row)}
               onClick={() => props.onClick(row)}
             />
           )
