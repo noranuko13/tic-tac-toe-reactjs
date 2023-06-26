@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+import { Tailwind } from './tailwind'
 
 interface SquareProps {
   value: string
@@ -7,26 +8,20 @@ interface SquareProps {
 }
 
 export function Square(props: SquareProps) {
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'Enter') {
-      props.onClick()
-    }
-  }
-  const activeClassName = useMemo<string>(() => {
-    return props.active ? 'bg-stone-300 active' : ''
+  const className = useMemo<string>(() => {
+    return [
+      Tailwind.className({ active: props.active }),
+      props.active ? 'active' : '',
+    ].join(' ')
   }, [props.active])
 
-  const divStyle = 'border border-stone-400'
-
   return (
-    <div
-      className={`w-12 h-12 flex justify-center items-center ${divStyle} ${activeClassName}`}
+    <button
       data-testid="square"
-      tabIndex={0}
       onClick={() => props.onClick()}
-      onKeyDown={(e) => handleKeyDown(e)}
+      className={className}
     >
-      <div className="text-xl">{props.value}</div>
-    </div>
+      {props.value}
+    </button>
   )
 }
