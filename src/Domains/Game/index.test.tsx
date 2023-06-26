@@ -189,14 +189,14 @@ test('Game: display xy coordinates', () => {
   const xys = screen.getAllByTestId('xy')
   expect(xys[0]).toHaveTextContent('')
   expect(xys[1]).toHaveTextContent('(1, 1)') // #1
-  expect(xys[2]).toHaveTextContent('(2, 1)') // #2
-  expect(xys[3]).toHaveTextContent('(1, 2)') // #3
+  expect(xys[2]).toHaveTextContent('(1, 2)') // #2
+  expect(xys[3]).toHaveTextContent('(2, 1)') // #3
   expect(xys[4]).toHaveTextContent('(2, 2)') // #4
-  expect(xys[5]).toHaveTextContent('(2, 3)') // #5
-  expect(xys[6]).toHaveTextContent('(1, 3)') // #6
+  expect(xys[5]).toHaveTextContent('(3, 2)') // #5
+  expect(xys[6]).toHaveTextContent('(3, 1)') // #6
   expect(xys[7]).toHaveTextContent('(3, 3)') // #7
-  expect(xys[8]).toHaveTextContent('(3, 2)') // #8
-  expect(xys[9]).toHaveTextContent('(3, 1)') // #9
+  expect(xys[8]).toHaveTextContent('(2, 3)') // #8
+  expect(xys[9]).toHaveTextContent('(1, 3)') // #9
 })
 
 test('Game: highlight the current line', () => {

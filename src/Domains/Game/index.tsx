@@ -28,7 +28,7 @@ export function Game() {
       slicedHistory.concat([
         {
           squareList: currentSquareList,
-          xy: [Math.floor(i / 3) + 1, (i % 3) + 1],
+          xy: [(i % 3) + 1, Math.floor(i / 3) + 1],
         },
       ])
     )

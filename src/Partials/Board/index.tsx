@@ -11,7 +11,7 @@ interface BoardProps {
 export function Board(props: BoardProps) {
   const squares = BOARD_COLUMNS.map((rows, index) => {
     return (
-      <div key={index}>
+      <div key={index} className="flex flex-row justify-center">
         {rows.map((row) => {
           return (
             <Square
@@ -27,7 +27,7 @@ export function Board(props: BoardProps) {
   })
 
   return (
-    <div data-testid="board" className="flex justify-center">
+    <div data-testid="board" className="flex flex-col">
       {squares}
     </div>
   )
