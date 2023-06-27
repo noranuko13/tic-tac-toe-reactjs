@@ -1,7 +1,8 @@
 import React from 'react'
 import { Square } from '../Square'
 import { SquareList } from '../../Models/SquareList'
-import { BOARD_COLUMNS } from '../../constants'
+import { BOARD_ROWS } from '../../constants'
+import './style.css'
 
 interface BoardProps {
   squareList: SquareList
@@ -9,26 +10,34 @@ interface BoardProps {
 }
 
 export function Board(props: BoardProps) {
-  const squares = BOARD_COLUMNS.map((rows, index) => {
-    return (
-      <div key={index} className="flex flex-row justify-center">
-        {rows.map((row) => {
-          return (
-            <Square
-              key={row}
-              value={props.squareList.getSquare(row)}
-              active={props.squareList.victoryLine().includes(row)}
-              onClick={() => props.onClick(row)}
-            />
-          )
-        })}
-      </div>
-    )
-  })
-
+  const BOARD_FILES = ['a', 'b', 'c']
   return (
-    <div data-testid="board" className="flex flex-col">
-      {squares}
+    <div data-testid="board" className="board">
+      <div className="corner"></div>
+      {BOARD_FILES.map((file) => {
+        return (
+          <button key={file} className="file">
+            {file}
+          </button>
+        )
+      })}
+      {BOARD_ROWS.map((rows, index) => {
+        return (
+          <React.Fragment key={index}>
+            <button className="rank">{index + 1}</button>
+            {rows.map((r) => {
+              return (
+                <Square
+                  key={r}
+                  value={props.squareList.getSquare(r)}
+                  active={props.squareList.victoryLine().includes(r)}
+                  onClick={() => props.onClick(r)}
+                />
+              )
+            })}
+          </React.Fragment>
+        )
+      })}
     </div>
   )
 }

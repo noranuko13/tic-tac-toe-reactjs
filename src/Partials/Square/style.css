@@ -1,0 +1,7 @@
+.square {
+  @apply w-12 h-12;
+  @apply border border-stone-400;
+}
+.square.active {
+  @apply bg-stone-300;
+}

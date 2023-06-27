@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { Tailwind } from './tailwind'
+import './style.css'
 
 interface SquareProps {
   value: string
@@ -8,18 +8,19 @@ interface SquareProps {
 }
 
 export function Square(props: SquareProps) {
-  const className = useMemo<string>(() => {
-    return [
-      Tailwind.className({ active: props.active }),
-      props.active ? 'active' : '',
-    ].join(' ')
+  const buttonClassName = useMemo<string>(() => {
+    const classNames = ['square']
+    if (props.active) {
+      classNames.push('active')
+    }
+    return classNames.join(' ')
   }, [props.active])
 
   return (
     <button
       data-testid="square"
       onClick={() => props.onClick()}
-      className={className}
+      className={buttonClassName}
     >
       {props.value}
     </button>
