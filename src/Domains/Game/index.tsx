@@ -77,7 +77,7 @@ export function Game() {
               onClick={(i) => handleClick(i)}
             />
           </article>
-          <article className="sm:w-3/5 pb-2">
+          <article className="sm:w-3/5 pb-2 text-center">
             <Move
               histories={histories}
               stepNumber={stepNumber}
