@@ -1,3 +1,14 @@
 {
-  "title": "Tic Tac Toe"
+  "title": "Tic Tac Toe",
+  "board": {
+    "next": "Next player: {{name}}",
+    "winner": "Winner: ",
+    "tie": "It's a tie!"
+  },
+  "move": {
+    "description": "Text",
+    "coordinate": "(x, y)",
+    "start": "Go to game start",
+    "goto": "Go to move #"
+  }
 }

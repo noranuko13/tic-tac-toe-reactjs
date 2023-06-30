@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import { Board } from '../../Partials/Board'
 import { SquareList } from '../../Models/SquareList'
 import { Move } from '../../Partials/Move'
-import { Trans } from '../../Elements'
+import { useTranslation } from 'react-i18next'
 
 export function Game() {
+  const { t } = useTranslation()
   const [histories, setHistories] = useState<
     { squareList: SquareList; xy: number[] }[]
   >([
@@ -45,15 +46,15 @@ export function Game() {
 
   const statusText = () => {
     if (stepNumber === 9) {
-      return "It's a tie!"
+      return t('board.tie')
     }
 
     const winner = currentSquareList.winner()
     if (winner) {
-      return 'Winner: ' + winner
+      return t('board.winner') + winner
     }
 
-    return 'Next player: ' + (xIsNext ? 'X' : 'O')
+    return t('board.next', { name: xIsNext ? 'X' : 'O' })
   }
 
   const bgStyle: string = 'bg-stone-200 text-stone-950'
@@ -66,7 +67,7 @@ export function Game() {
           <h1
             className={`border-t-4 border-b-4 border-double border-stone-400 py-1 text-xl ${h1Style}`}
           >
-            <Trans text={'title'} />
+            {t('title')}
           </h1>
         </header>
         <main data-testid="game" className="pb-4 flex flex-col sm:flex-row">

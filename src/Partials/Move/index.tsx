@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { SquareList } from '../../Models/SquareList'
 import './style.scss'
 import { Button } from '../../Elements'
+import { useTranslation } from 'react-i18next'
 
 interface MoveProps {
   histories: { squareList: SquareList; xy: number[] }[]
@@ -10,6 +11,7 @@ interface MoveProps {
 }
 
 export function Move(props: MoveProps) {
+  const { t } = useTranslation()
   const [order, setOrder] = useState<string>('asc')
 
   const handleClick = () => {
@@ -22,7 +24,7 @@ export function Move(props: MoveProps) {
       : props.histories.slice().reverse()
   const moves = histories.map((step, index) => {
     const move = order === 'asc' ? index : histories.length - index - 1
-    const text = move ? 'Go to move #' + move : 'Go to game start'
+    const text = move ? t('move.goto') + move : t('move.start')
     const xy = step.xy.join(', ') ? `(${step.xy.join(', ')})` : ''
     const active = props.stepNumber === move ? 'active' : ''
     return (
@@ -53,8 +55,8 @@ export function Move(props: MoveProps) {
               #
             </Button>
           </th>
-          <th scope="col">Text</th>
-          <th scope="col">(x, y)</th>
+          <th scope="col">{t('move.description')}</th>
+          <th scope="col">{t('move.coordinate')}</th>
         </tr>
       </thead>
       <tbody>{moves}</tbody>
