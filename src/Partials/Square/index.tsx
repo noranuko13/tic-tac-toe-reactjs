@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import './style.css'
+import './style.scss'
 
 interface SquareProps {
   value: string

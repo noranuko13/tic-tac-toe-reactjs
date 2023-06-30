@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { SquareList } from '../../Models/SquareList'
-import './style.css'
+import './style.scss'
 import { Button } from '../../Elements'
 
 interface MoveProps {

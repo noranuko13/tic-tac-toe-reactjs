@@ -1,0 +1,21 @@
+.move {
+  @apply mx-auto;
+
+  thead {
+    th {
+      @apply py-2 px-3;
+      @apply bg-stone-300;
+    }
+  }
+
+  tbody {
+    tr {
+      @apply border-t border-b border-dashed border-stone-400;
+
+      th,
+      td {
+        @apply py-2 px-3;
+      }
+    }
+  }
+}

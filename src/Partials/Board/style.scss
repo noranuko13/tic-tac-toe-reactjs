@@ -1,0 +1,16 @@
+.board {
+  @apply flex flex-wrap mx-auto w-40 text-xl;
+  @apply text-xl;
+
+  .corner {
+    @apply w-4 h-6;
+  }
+
+  .file {
+    @apply w-12 h-6 mb-1 cursor-default;
+  }
+
+  .rank {
+    @apply w-4 h-12 cursor-default;
+  }
+}
