@@ -3,6 +3,7 @@ import { Board } from '../../Partials/Board'
 import { SquareList } from '../../Models/SquareList'
 import { Move } from '../../Partials/Move'
 import { useTranslation } from 'react-i18next'
+import { Main } from '../../Partials/Main'
 
 export function Game() {
   const { t } = useTranslation()
@@ -57,21 +58,26 @@ export function Game() {
     return t('board.next', { name: xIsNext ? 'X' : 'O' })
   }
 
+  const board = (
+    <div>
+      <h3 data-testid="status">{statusText()}</h3>
+      <Board squareList={currentSquareList} onClick={(i) => handleClick(i)} />
+    </div>
+  )
+
+  const move = (
+    <Move
+      histories={histories}
+      stepNumber={stepNumber}
+      jumpTo={(s: number) => {
+        jumpTo(s)
+      }}
+    />
+  )
+
   return (
-    <main data-testid="game" className="pb-4 flex flex-col sm:flex-row">
-      <article className="sm:w-2/5 pb-3 text-center">
-        <h3 data-testid="status">{statusText()}</h3>
-        <Board squareList={currentSquareList} onClick={(i) => handleClick(i)} />
-      </article>
-      <article className="sm:w-3/5 pb-2 text-center">
-        <Move
-          histories={histories}
-          stepNumber={stepNumber}
-          jumpTo={(s: number) => {
-            jumpTo(s)
-          }}
-        />
-      </article>
-    </main>
+    <div data-testid="game">
+      <Main board={board} move={move} />
+    </div>
   )
 }
