@@ -22,7 +22,7 @@ export function Game() {
     const slicedHistory = histories.slice(0, stepNumber + 1)
     const currentSquareList =
       slicedHistory[slicedHistory.length - 1].squareList.clone()
-    if (currentSquareList.winner() || currentSquareList.getSquare(i)) {
+    if (currentSquareList.getWinner() || currentSquareList.getSquare(i)) {
       return
     }
     currentSquareList.setSquare(i, xIsNext ? 'X' : 'O')
@@ -50,7 +50,7 @@ export function Game() {
       return t('board.tie')
     }
 
-    const winner = currentSquareList.winner()
+    const winner = currentSquareList.getWinner()
     if (winner) {
       return t('board.winner') + winner
     }

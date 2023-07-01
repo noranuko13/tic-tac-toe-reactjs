@@ -55,16 +55,16 @@ test('SquareList: setSquare', () => {
   expect(squareList.getSquare(2)).toBe('Z')
 })
 
-test('SquareList: winner: return nothing', () => {
-  expect(initSquareList.winner()).toBe('')
+test('SquareList: getWinner: return nothing', () => {
+  expect(initSquareList.getWinner()).toBe('')
 })
 
-test('SquareList: winner: return winner X', () => {
-  expect(winXSquareList.winner()).toBe('X')
+test('SquareList: getWinner: return winner X', () => {
+  expect(winXSquareList.getWinner()).toBe('X')
 })
 
-test('SquareList: winner: return winner O', () => {
-  expect(winOSquareList.winner()).toBe('O')
+test('SquareList: getWinner: return winner O', () => {
+  expect(winOSquareList.getWinner()).toBe('O')
 })
 
 test('SquareList: victoryLine: return nothing', () => {

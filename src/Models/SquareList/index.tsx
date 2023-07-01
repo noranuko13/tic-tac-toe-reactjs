@@ -23,7 +23,7 @@ export class SquareList {
     this.squares[index] = square
   }
 
-  winner(): string {
+  getWinner(): string {
     const index = this.indexOfWinner()
     if (index !== -1) {
       return this.squares[VICTORY_LINES[index][0]]
