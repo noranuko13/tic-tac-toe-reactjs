@@ -4,28 +4,28 @@ import { Move } from '../../Partials/Move'
 import { useTranslation } from 'react-i18next'
 import { Main } from '../../Partials/Main'
 import { Record } from '../../Models/Record'
+import { RecordList } from '../../Models/RecordList/record-list'
 
 export function Game() {
   const { t } = useTranslation()
-  const [records, setRecords] = useState<Record[]>([new Record()])
+  const [recordList, setRecordList] = useState<RecordList>(
+    new RecordList([new Record()])
+  )
   const [stepNumber, setStepNumber] = useState<number>(0)
   const [xIsNext, setXIsNext] = useState<boolean>(true)
 
   const handleClick = (i: number) => {
-    const slicedRecords = records.slice(0, stepNumber + 1)
-    const currentSquareList = slicedRecords[slicedRecords.length - 1]
-      .getSquareList()
-      .clone()
+    const currentRecordList = recordList.createRecordList(stepNumber)
+    const currentSquareList = currentRecordList.createLastSquareList()
     if (currentSquareList.getWinner() || currentSquareList.getSquare(i)) {
       return
     }
     currentSquareList.setSquare(i, xIsNext ? 'X' : 'O')
-    setRecords(
-      slicedRecords.concat([
-        new Record(currentSquareList, [(i % 3) + 1, Math.floor(i / 3) + 1]),
-      ])
+    currentRecordList.addRecord(
+      new Record(currentSquareList, [(i % 3) + 1, Math.floor(i / 3) + 1])
     )
-    setStepNumber(slicedRecords.length)
+    setRecordList(currentRecordList)
+    setStepNumber(stepNumber + 1)
     setXIsNext(!xIsNext)
   }
 
@@ -34,7 +34,7 @@ export function Game() {
     setXIsNext(step % 2 === 0)
   }
 
-  const currentSquareList = records[stepNumber].getSquareList()
+  const currentSquareList = recordList.getRecord(stepNumber).getSquareList()
 
   const statusText = () => {
     if (stepNumber === 9) {
@@ -58,7 +58,7 @@ export function Game() {
 
   const move = (
     <Move
-      records={records}
+      recordList={recordList}
       stepNumber={stepNumber}
       jumpTo={(s: number) => {
         jumpTo(s)

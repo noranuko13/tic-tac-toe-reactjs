@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import './style.scss'
 import { Button } from '../../Elements/Button'
 import { useTranslation } from 'react-i18next'
-import { Record } from '../../Models/Record'
+import { RecordList } from '../../Models/RecordList'
 import { OrderType } from '../../constants'
 
 interface MoveProps {
-  records: Record[]
+  recordList: RecordList
   stepNumber: number
   jumpTo: any
 }
@@ -19,15 +19,17 @@ export function Move(props: MoveProps) {
     setOrderType(orderType === 'asc' ? 'desc' : 'asc')
   }
 
-  const records =
+  const iterator =
     orderType === 'asc'
-      ? props.records.slice()
-      : props.records.slice().reverse()
-  const moveTrs = records.map((record, index) => {
-    const turnNumber = orderType === 'asc' ? index : records.length - index - 1
+      ? props.recordList.ascIterator()
+      : props.recordList.descIterator()
+  const moveTrs = []
+  while (iterator.hasNext()) {
+    const record = iterator.getNextRecord()
+    const turnNumber = iterator.getNextTurnNumber()
     const text = turnNumber ? t('move.goto') + turnNumber : t('move.start')
     const active = props.stepNumber === turnNumber ? 'active' : ''
-    return (
+    moveTrs.push(
       <tr key={turnNumber} className={active} data-testid="line">
         <th scope="row">
           <Button
@@ -41,7 +43,8 @@ export function Move(props: MoveProps) {
         <td data-testid="xy">{record.getXyStr()}</td>
       </tr>
     )
-  })
+    iterator.advance()
+  }
 
   return (
     <table data-testid="move" className="move">
