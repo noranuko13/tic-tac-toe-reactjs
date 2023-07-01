@@ -5,14 +5,19 @@ import enTranslation from './resources/locales/en/translation.json'
 i18next
   .use(initReactI18next)
   .init({
-    resources: {
-      en: {
-        translation: enTranslation,
-      },
-    },
     lng: 'en',
+    fallbackLng: 'en',
+    ns: ['translationsNS'],
+    defaultNS: 'translationsNS',
     interpolation: {
       escapeValue: false,
     },
+    resources: {
+      en: {
+        translationsNS: enTranslation,
+      },
+    },
   })
   .then()
+
+export { i18next }

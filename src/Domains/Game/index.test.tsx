@@ -1,6 +1,8 @@
 import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { Game } from './index'
+import { I18nextProvider } from 'react-i18next'
+import { i18next } from '../../i18n'
 
 const getLines = (): HTMLElement[] => {
   return screen.getAllByTestId('line')
@@ -35,7 +37,11 @@ const simulateWinX = (): HTMLElement[] => {
 }
 
 test('Game: render', () => {
-  render(<Game />)
+  render(
+    <I18nextProvider i18n={i18next}>
+      <Game />
+    </I18nextProvider>
+  )
 
   const e = screen.getByTestId('game')
   expect(e).toBeInTheDocument()

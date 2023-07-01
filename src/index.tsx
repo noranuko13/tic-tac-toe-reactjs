@@ -2,7 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import reportWebVitals from './reportWebVitals'
-import './i18n'
+import { I18nextProvider } from 'react-i18next'
+import { i18next } from './i18n'
 import { Game } from './Domains/Game'
 
 // prettier-ignore
@@ -11,7 +12,9 @@ const root = ReactDOM.createRoot(
 )
 root.render(
   <React.StrictMode>
-    <Game />
+    <I18nextProvider i18n={i18next}>
+      <Game />
+    </I18nextProvider>
   </React.StrictMode>
 )
 
