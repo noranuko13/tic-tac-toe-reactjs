@@ -3,6 +3,7 @@ import './style.scss'
 import { Button } from '../../Elements/Button'
 import { useTranslation } from 'react-i18next'
 import { Record } from '../../Models/Record'
+import { OrderType } from '../../constants'
 
 interface MoveProps {
   records: Record[]
@@ -12,26 +13,28 @@ interface MoveProps {
 
 export function Move(props: MoveProps) {
   const { t } = useTranslation()
-  const [order, setOrder] = useState<string>('asc')
+  const [orderType, setOrderType] = useState<OrderType>('asc')
 
   const handleClick = () => {
-    setOrder(order === 'asc' ? 'desc' : 'asc')
+    setOrderType(orderType === 'asc' ? 'desc' : 'asc')
   }
 
   const records =
-    order === 'asc' ? props.records.slice() : props.records.slice().reverse()
-  const moves = records.map((record, index) => {
-    const move = order === 'asc' ? index : records.length - index - 1
-    const text = move ? t('move.goto') + move : t('move.start')
-    const active = props.stepNumber === move ? 'active' : ''
+    orderType === 'asc'
+      ? props.records.slice()
+      : props.records.slice().reverse()
+  const moveTrs = records.map((record, index) => {
+    const turnNumber = orderType === 'asc' ? index : records.length - index - 1
+    const text = turnNumber ? t('move.goto') + turnNumber : t('move.start')
+    const active = props.stepNumber === turnNumber ? 'active' : ''
     return (
-      <tr key={move} className={active} data-testid="line">
+      <tr key={turnNumber} className={active} data-testid="line">
         <th scope="row">
           <Button
             data-testid={'move-button'}
-            onClick={() => props.jumpTo(move)}
+            onClick={() => props.jumpTo(turnNumber)}
           >
-            #{move}
+            #{turnNumber}
           </Button>
         </th>
         <td data-testid="text">{text}</td>
@@ -56,7 +59,7 @@ export function Move(props: MoveProps) {
           <th scope="col">{t('move.coordinate')}</th>
         </tr>
       </thead>
-      <tbody>{moves}</tbody>
+      <tbody>{moveTrs}</tbody>
     </table>
   )
 }

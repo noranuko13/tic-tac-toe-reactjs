@@ -14,3 +14,5 @@ export const BOARD_ROWS: number[][] = [
   [3, 4, 5],
   [6, 7, 8],
 ]
+
+export type OrderType = 'asc' | 'desc'
