@@ -3,8 +3,6 @@ import { Board } from '../../Partials/Board'
 import { SquareList } from '../../Models/SquareList'
 import { Move } from '../../Partials/Move'
 import { useTranslation } from 'react-i18next'
-import { Header } from '../../Partials/Header'
-import { Footer } from '../../Partials/Footer'
 
 export function Game() {
   const { t } = useTranslation()
@@ -59,32 +57,21 @@ export function Game() {
     return t('board.next', { name: xIsNext ? 'X' : 'O' })
   }
 
-  const bgStyle: string = 'bg-stone-200 text-stone-950'
-
   return (
-    <div className={`h-screen ${bgStyle}`}>
-      <div className="container mx-auto max-w-lg py-5">
-        <Header />
-        <main data-testid="game" className="pb-4 flex flex-col sm:flex-row">
-          <article className="sm:w-2/5 pb-3 text-center">
-            <h3 data-testid="status">{statusText()}</h3>
-            <Board
-              squareList={currentSquareList}
-              onClick={(i) => handleClick(i)}
-            />
-          </article>
-          <article className="sm:w-3/5 pb-2 text-center">
-            <Move
-              histories={histories}
-              stepNumber={stepNumber}
-              jumpTo={(s: number) => {
-                jumpTo(s)
-              }}
-            />
-          </article>
-        </main>
-        <Footer />
-      </div>
-    </div>
+    <main data-testid="game" className="pb-4 flex flex-col sm:flex-row">
+      <article className="sm:w-2/5 pb-3 text-center">
+        <h3 data-testid="status">{statusText()}</h3>
+        <Board squareList={currentSquareList} onClick={(i) => handleClick(i)} />
+      </article>
+      <article className="sm:w-3/5 pb-2 text-center">
+        <Move
+          histories={histories}
+          stepNumber={stepNumber}
+          jumpTo={(s: number) => {
+            jumpTo(s)
+          }}
+        />
+      </article>
+    </main>
   )
 }

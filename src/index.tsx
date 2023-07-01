@@ -5,6 +5,9 @@ import reportWebVitals from './reportWebVitals'
 import { I18nextProvider } from 'react-i18next'
 import { i18next } from './i18n'
 import { Game } from './Domains/Game'
+import { Wrapper } from './Partials/Wrapper'
+import { Header } from './Partials/Header'
+import { Footer } from './Partials/Footer'
 
 // prettier-ignore
 const root = ReactDOM.createRoot(
@@ -13,7 +16,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <I18nextProvider i18n={i18next}>
-      <Game />
+      <Wrapper>
+        <Header />
+        <Game />
+        <Footer />
+      </Wrapper>
     </I18nextProvider>
   </React.StrictMode>
 )
