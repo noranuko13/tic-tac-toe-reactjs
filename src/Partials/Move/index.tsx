@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { SquareList } from '../../Models/SquareList'
 import './style.scss'
-import { Button } from '../../Elements'
+import { Button } from '../../Elements/Button'
 import { useTranslation } from 'react-i18next'
 
 interface MoveProps {

@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react'
+import './style.scss'
 
 interface ButtonProps {
   'data-testid': string
@@ -7,13 +8,11 @@ interface ButtonProps {
 }
 
 export function Button(props: ButtonProps): ReactElement {
-  const buttonShape: string = 'py-1 w-12 rounded font-bold'
-  const buttonStyle: string = 'bg-stone-500 hover:bg-stone-400'
   return (
     <button
       data-testid={props['data-testid']}
       onClick={() => props.onClick()}
-      className={`${buttonShape} ${buttonStyle}`}
+      className="button"
     >
       {props.children}
     </button>
