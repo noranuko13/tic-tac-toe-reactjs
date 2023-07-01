@@ -3,6 +3,8 @@ import { Board } from '../../Partials/Board'
 import { SquareList } from '../../Models/SquareList'
 import { Move } from '../../Partials/Move'
 import { useTranslation } from 'react-i18next'
+import { Header } from '../../Partials/Header'
+import { Footer } from '../../Partials/Footer'
 
 export function Game() {
   const { t } = useTranslation()
@@ -58,18 +60,11 @@ export function Game() {
   }
 
   const bgStyle: string = 'bg-stone-200 text-stone-950'
-  const h1Style: string = 'font-semibold italic'
 
   return (
     <div className={`h-screen ${bgStyle}`}>
       <div className="container mx-auto max-w-lg py-5">
-        <header className="pb-5 text-center">
-          <h1
-            className={`border-t-4 border-b-4 border-double border-stone-400 py-1 text-xl ${h1Style}`}
-          >
-            {t('title')}
-          </h1>
-        </header>
+        <Header />
         <main data-testid="game" className="pb-4 flex flex-col sm:flex-row">
           <article className="sm:w-2/5 pb-3 text-center">
             <h3 data-testid="status">{statusText()}</h3>
@@ -88,7 +83,7 @@ export function Game() {
             />
           </article>
         </main>
-        <footer className="border-t-4 border-double border-stone-400"></footer>
+        <Footer />
       </div>
     </div>
   )

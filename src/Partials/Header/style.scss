@@ -1,0 +1,8 @@
+.header {
+  @apply pb-5 text-center;
+
+  h1 {
+    @apply py-1 text-xl font-semibold italic;
+    @apply border-t-4 border-b-4 border-double border-stone-400;
+  }
+}
