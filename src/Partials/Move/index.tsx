@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { SquareList } from '../../Models/SquareList'
 import './style.scss'
 import { Button } from '../../Elements/Button'
 import { useTranslation } from 'react-i18next'
+import { Record } from '../../Models/Record'
 
 interface MoveProps {
-  histories: { squareList: SquareList; xy: number[] }[]
+  records: Record[]
   stepNumber: number
   jumpTo: any
 }
@@ -18,14 +18,11 @@ export function Move(props: MoveProps) {
     setOrder(order === 'asc' ? 'desc' : 'asc')
   }
 
-  const histories =
-    order === 'asc'
-      ? props.histories.slice()
-      : props.histories.slice().reverse()
-  const moves = histories.map((step, index) => {
-    const move = order === 'asc' ? index : histories.length - index - 1
+  const records =
+    order === 'asc' ? props.records.slice() : props.records.slice().reverse()
+  const moves = records.map((record, index) => {
+    const move = order === 'asc' ? index : records.length - index - 1
     const text = move ? t('move.goto') + move : t('move.start')
-    const xy = step.xy.join(', ') ? `(${step.xy.join(', ')})` : ''
     const active = props.stepNumber === move ? 'active' : ''
     return (
       <tr key={move} className={active} data-testid="line">
@@ -38,7 +35,7 @@ export function Move(props: MoveProps) {
           </Button>
         </th>
         <td data-testid="text">{text}</td>
-        <td data-testid="xy">{xy}</td>
+        <td data-testid="xy">{record.getXyStr()}</td>
       </tr>
     )
   })

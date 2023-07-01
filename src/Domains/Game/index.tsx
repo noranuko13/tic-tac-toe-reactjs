@@ -1,40 +1,31 @@
 import React, { useState } from 'react'
 import { Board } from '../../Partials/Board'
-import { SquareList } from '../../Models/SquareList'
 import { Move } from '../../Partials/Move'
 import { useTranslation } from 'react-i18next'
 import { Main } from '../../Partials/Main'
+import { Record } from '../../Models/Record'
 
 export function Game() {
   const { t } = useTranslation()
-  const [histories, setHistories] = useState<
-    { squareList: SquareList; xy: number[] }[]
-  >([
-    {
-      squareList: new SquareList(),
-      xy: [],
-    },
-  ])
+  const [records, setRecords] = useState<Record[]>([new Record()])
   const [stepNumber, setStepNumber] = useState<number>(0)
   const [xIsNext, setXIsNext] = useState<boolean>(true)
 
   const handleClick = (i: number) => {
-    const slicedHistory = histories.slice(0, stepNumber + 1)
-    const currentSquareList =
-      slicedHistory[slicedHistory.length - 1].squareList.clone()
+    const slicedRecords = records.slice(0, stepNumber + 1)
+    const currentSquareList = slicedRecords[slicedRecords.length - 1]
+      .getSquareList()
+      .clone()
     if (currentSquareList.getWinner() || currentSquareList.getSquare(i)) {
       return
     }
     currentSquareList.setSquare(i, xIsNext ? 'X' : 'O')
-    setHistories(
-      slicedHistory.concat([
-        {
-          squareList: currentSquareList,
-          xy: [(i % 3) + 1, Math.floor(i / 3) + 1],
-        },
+    setRecords(
+      slicedRecords.concat([
+        new Record(currentSquareList, [(i % 3) + 1, Math.floor(i / 3) + 1]),
       ])
     )
-    setStepNumber(slicedHistory.length)
+    setStepNumber(slicedRecords.length)
     setXIsNext(!xIsNext)
   }
 
@@ -43,7 +34,7 @@ export function Game() {
     setXIsNext(step % 2 === 0)
   }
 
-  const currentSquareList = histories[stepNumber].squareList
+  const currentSquareList = records[stepNumber].getSquareList()
 
   const statusText = () => {
     if (stepNumber === 9) {
@@ -67,7 +58,7 @@ export function Game() {
 
   const move = (
     <Move
-      histories={histories}
+      records={records}
       stepNumber={stepNumber}
       jumpTo={(s: number) => {
         jumpTo(s)
