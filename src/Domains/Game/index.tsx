@@ -31,7 +31,11 @@ export function Game() {
   const currentSquareList = recordList.getRecord(turnNumber).getSquareList()
   const board = (
     <div>
-      <Status turnNumber={turnNumber} winner={currentSquareList.getWinner()} xIsNext={xIsNext}/>
+      <Status
+        turnNumber={turnNumber}
+        winner={currentSquareList.getWinner()}
+        xIsNext={xIsNext}
+      />
       <Board squareList={currentSquareList} onClick={(i) => handleClick(i)} />
     </div>
   )
