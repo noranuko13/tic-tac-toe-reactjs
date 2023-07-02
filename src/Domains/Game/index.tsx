@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import { Board } from '../../Partials/Board'
 import { Move } from '../../Partials/Move'
-import { useTranslation } from 'react-i18next'
 import { Main } from '../../Partials/Main'
 import { Record } from '../../Models/Record'
 import { RecordList } from '../../Models/RecordList'
+import { Status } from '../../Partials/Status'
 
 export function Game() {
-  const { t } = useTranslation()
   const [recordList, setRecordList] = useState<RecordList>(
     new RecordList([new Record()])
   )
@@ -32,7 +31,7 @@ export function Game() {
   const currentSquareList = recordList.getRecord(turnNumber).getSquareList()
   const board = (
     <div>
-      <h3 data-testid="status">{statusText()}</h3>
+      <Status turnNumber={turnNumber} winner={currentSquareList.getWinner()} xIsNext={xIsNext}/>
       <Board squareList={currentSquareList} onClick={(i) => handleClick(i)} />
     </div>
   )
