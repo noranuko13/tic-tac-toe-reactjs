@@ -11,11 +11,11 @@ export function Game() {
   const [recordList, setRecordList] = useState<RecordList>(
     new RecordList([new Record()])
   )
-  const [stepNumber, setStepNumber] = useState<number>(0)
+  const [turnNumber, setTurnNumber] = useState<number>(0)
   const [xIsNext, setXIsNext] = useState<boolean>(true)
 
   const handleClick = (i: number) => {
-    const currentRecordList = recordList.createRecordList(stepNumber)
+    const currentRecordList = recordList.createRecordList(turnNumber)
     const currentSquareList = currentRecordList.createLastSquareList()
     if (currentSquareList.getWinner() || currentSquareList.getSquare(i)) {
       return
@@ -25,30 +25,11 @@ export function Game() {
       new Record(currentSquareList, [(i % 3) + 1, Math.floor(i / 3) + 1])
     )
     setRecordList(currentRecordList)
-    setStepNumber(stepNumber + 1)
+    setTurnNumber(turnNumber + 1)
     setXIsNext(!xIsNext)
   }
 
-  const jumpTo = (step: number) => {
-    setStepNumber(step)
-    setXIsNext(step % 2 === 0)
-  }
-
-  const currentSquareList = recordList.getRecord(stepNumber).getSquareList()
-
-  const statusText = () => {
-    if (stepNumber === 9) {
-      return t('board.tie')
-    }
-
-    const winner = currentSquareList.getWinner()
-    if (winner) {
-      return t('board.winner') + winner
-    }
-
-    return t('board.next', { name: xIsNext ? 'X' : 'O' })
-  }
-
+  const currentSquareList = recordList.getRecord(turnNumber).getSquareList()
   const board = (
     <div>
       <h3 data-testid="status">{statusText()}</h3>
@@ -59,9 +40,10 @@ export function Game() {
   const move = (
     <Move
       recordList={recordList}
-      stepNumber={stepNumber}
-      jumpTo={(s: number) => {
-        jumpTo(s)
+      stepNumber={turnNumber}
+      jumpTo={(step: number) => {
+        setTurnNumber(step)
+        setXIsNext(step % 2 === 0)
       }}
     />
   )
