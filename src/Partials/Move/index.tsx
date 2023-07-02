@@ -15,22 +15,36 @@ export function Move(props: MoveProps) {
   const { t } = useTranslation()
   const [orderType, setOrderType] = useState<OrderType>('asc')
 
-  const handleClick = () => {
-    setOrderType(orderType === 'asc' ? 'desc' : 'asc')
-  }
+  const theadTr = (
+    <tr>
+      <th scope="col">
+        <Button
+          data-testid={'move-sort-button'}
+          onClick={() => {
+            setOrderType(orderType === 'asc' ? 'desc' : 'asc')
+          }}
+        >
+          #
+        </Button>
+      </th>
+      <th scope="col">{t('move.description')}</th>
+      <th scope="col">{t('move.coordinate')}</th>
+    </tr>
+  )
 
   const iterator =
     orderType === 'asc'
       ? props.recordList.ascIterator()
       : props.recordList.descIterator()
-  const moveTrs = []
+  const tbodyTrs = []
   while (iterator.hasNext()) {
-    const record = iterator.getNextRecord()
     const turnNumber = iterator.getNextTurnNumber()
-    const text = turnNumber ? t('move.goto') + turnNumber : t('move.start')
-    const active = props.stepNumber === turnNumber ? 'active' : ''
-    moveTrs.push(
-      <tr key={turnNumber} className={active} data-testid="line">
+    tbodyTrs.push(
+      <tr
+        key={turnNumber}
+        className={props.stepNumber === turnNumber ? 'active' : ''}
+        data-testid="line"
+      >
         <th scope="row">
           <Button
             data-testid={'move-button'}
@@ -39,8 +53,10 @@ export function Move(props: MoveProps) {
             #{turnNumber}
           </Button>
         </th>
-        <td data-testid="text">{text}</td>
-        <td data-testid="xy">{record.getXyStr()}</td>
+        <td data-testid="text">
+          {turnNumber !== 0 ? t('move.goto', { turnNumber }) : t('move.start')}
+        </td>
+        <td data-testid="xy">{iterator.getNextRecord().getXyStr()}</td>
       </tr>
     )
     iterator.advance()
@@ -48,21 +64,8 @@ export function Move(props: MoveProps) {
 
   return (
     <table data-testid="move" className="move">
-      <thead>
-        <tr>
-          <th scope="col">
-            <Button
-              data-testid={'move-sort-button'}
-              onClick={() => handleClick()}
-            >
-              #
-            </Button>
-          </th>
-          <th scope="col">{t('move.description')}</th>
-          <th scope="col">{t('move.coordinate')}</th>
-        </tr>
-      </thead>
-      <tbody>{moveTrs}</tbody>
+      <thead>{theadTr}</thead>
+      <tbody>{tbodyTrs}</tbody>
     </table>
   )
 }

@@ -9,6 +9,6 @@
     "description": "Text",
     "coordinate": "(x, y)",
     "start": "Go to game start",
-    "goto": "Go to move #"
+    "goto": "Go to move #{{turnNumber}}"
   }
 }
