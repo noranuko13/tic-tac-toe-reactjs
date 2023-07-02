@@ -4,7 +4,7 @@ import { Move } from '../../Partials/Move'
 import { useTranslation } from 'react-i18next'
 import { Main } from '../../Partials/Main'
 import { Record } from '../../Models/Record'
-import { RecordList } from '../../Models/RecordList/record-list'
+import { RecordList } from '../../Models/RecordList'
 
 export function Game() {
   const { t } = useTranslation()

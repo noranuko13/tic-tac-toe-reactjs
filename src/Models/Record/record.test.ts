@@ -1,4 +1,4 @@
-import { Record } from './index'
+import { Record } from './record'
 import { SquareList } from '../SquareList'
 
 const startRecord = new Record()

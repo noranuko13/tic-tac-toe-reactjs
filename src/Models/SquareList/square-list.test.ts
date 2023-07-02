@@ -1,4 +1,4 @@
-import { SquareList } from './index'
+import { SquareList } from './square-list'
 
 const initSquareList = new SquareList()
 
