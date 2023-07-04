@@ -8,6 +8,7 @@ import { Game } from './Domains/Game'
 import { Wrapper } from './Partials/Wrapper'
 import { Header } from './Partials/Header'
 import { Footer } from './Partials/Footer'
+import { ErrorBoundary } from 'react-error-boundary'
 
 // prettier-ignore
 const root = ReactDOM.createRoot(
@@ -17,9 +18,13 @@ root.render(
   <React.StrictMode>
     <I18nextProvider i18n={i18next}>
       <Wrapper>
-        <Header />
-        <Game />
-        <Footer />
+        <ErrorBoundary
+          fallback={<div className="text-center">Something went wrong</div>}
+        >
+          <Header />
+          <Game />
+          <Footer />
+        </ErrorBoundary>
       </Wrapper>
     </I18nextProvider>
   </React.StrictMode>
