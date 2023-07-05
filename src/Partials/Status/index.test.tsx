@@ -14,7 +14,9 @@ test('Status: render', () => {
       <Status turnNumber={0} winner={''} xIsNext={true} />
     </I18nextProvider>
   )
-  expect(getStatus()).toBeInTheDocument()
+
+  const e = getStatus()
+  expect(e).toBeInTheDocument()
 })
 
 test('Status: render tie', () => {

@@ -20,7 +20,7 @@ export function Sheet(props: SheetProps) {
     <tr>
       <th scope="col">
         <Button
-          data-testid={'move-sort-button'}
+          data-testid={'sheet-sort-button'}
           onClick={() => props.sortRecords()}
         >
           #
@@ -46,7 +46,7 @@ export function Sheet(props: SheetProps) {
       >
         <th scope="row">
           <Button
-            data-testid={'move-button'}
+            data-testid={'sheet-move-button'}
             onClick={() => props.jumpTo(turnNumber)}
           >
             #{turnNumber}

@@ -11,7 +11,7 @@ interface StatusProps {
 export function Status(props: StatusProps) {
   const { t } = useTranslation()
 
-  const statusText = () => {
+  const statusInnerText = () => {
     if (props.turnNumber === 9) {
       return t('board.tie')
     }
@@ -21,5 +21,9 @@ export function Status(props: StatusProps) {
     return t('board.next', { name: props.xIsNext ? 'X' : 'O' })
   }
 
-  return <h3 data-testid="status">{statusText()}</h3>
+  return (
+    <h3 data-testid="status" className="status">
+      {statusInnerText()}
+    </h3>
+  )
 }
