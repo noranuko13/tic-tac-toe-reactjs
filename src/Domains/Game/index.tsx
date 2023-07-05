@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Board } from '../../Partials/Board'
-import { Move } from '../../Partials/Move'
+import { Move } from '../Move'
 import { Main } from '../../Partials/Main'
 import { Record } from '../../Models/Record'
 import { RecordList } from '../../Models/RecordList'

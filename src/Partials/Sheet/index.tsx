@@ -1,28 +1,27 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './style.scss'
 import { Button } from '../../Elements/Button'
 import { useTranslation } from 'react-i18next'
 import { RecordList } from '../../Models/RecordList'
 import { OrderType } from '../../constants'
 
-interface MoveProps {
+interface SheetProps {
   recordList: RecordList
   stepNumber: number
-  jumpTo: any
+  jumpTo: (step: number) => void
+  sortRecords: () => void
+  orderType: OrderType
 }
 
-export function Move(props: MoveProps) {
+export function Sheet(props: SheetProps) {
   const { t } = useTranslation()
-  const [orderType, setOrderType] = useState<OrderType>('asc')
 
   const theadTr = (
     <tr>
       <th scope="col">
         <Button
           data-testid={'move-sort-button'}
-          onClick={() => {
-            setOrderType(orderType === 'asc' ? 'desc' : 'asc')
-          }}
+          onClick={() => props.sortRecords()}
         >
           #
         </Button>
@@ -33,7 +32,7 @@ export function Move(props: MoveProps) {
   )
 
   const iterator =
-    orderType === 'asc'
+    props.orderType === 'asc'
       ? props.recordList.ascIterator()
       : props.recordList.descIterator()
   const tbodyTrs = []
@@ -63,7 +62,7 @@ export function Move(props: MoveProps) {
   }
 
   return (
-    <table data-testid="move" className="move">
+    <table data-testid="sheet" className="sheet">
       <thead>{theadTr}</thead>
       <tbody>{tbodyTrs}</tbody>
     </table>
