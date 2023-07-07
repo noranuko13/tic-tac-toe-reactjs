@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { Board } from '../../Partials/Board'
+import { Board } from '../../partials/Board'
 import { Move } from '../Move'
-import { Main } from '../../Partials/Main'
-import { Record } from '../../Models/Record'
-import { RecordList } from '../../Models/RecordList'
-import { Status } from '../../Partials/Status'
+import { Main } from '../../partials/Main'
+import { Record } from '../../models/Record'
+import { RecordList } from '../../models/RecordList'
+import { Status } from '../../partials/Status'
 
 export function Game() {
   const [recordList, setRecordList] = useState<RecordList>(

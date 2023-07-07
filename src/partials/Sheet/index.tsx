@@ -1,8 +1,8 @@
 import React from 'react'
 import './style.scss'
-import { Button } from '../../Elements/Button'
+import { Button } from '../../elements/Button'
 import { useTranslation } from 'react-i18next'
-import { RecordList } from '../../Models/RecordList'
+import { RecordList } from '../../models/RecordList'
 import { OrderType } from '../../constants'
 
 interface SheetProps {

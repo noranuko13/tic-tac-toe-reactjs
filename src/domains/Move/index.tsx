@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { RecordList } from '../../Models/RecordList'
+import { RecordList } from '../../models/RecordList'
 import { OrderType } from '../../constants'
-import { Sheet } from '../../Partials/Sheet'
+import { Sheet } from '../../partials/Sheet'
 
 interface MoveProps {
   recordList: RecordList

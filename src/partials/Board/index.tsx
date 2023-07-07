@@ -1,6 +1,6 @@
 import React from 'react'
 import { Square } from '../Square'
-import { SquareList } from '../../Models/SquareList'
+import { SquareList } from '../../models/SquareList'
 import { BOARD_ROWS } from '../../constants'
 import './style.scss'
 

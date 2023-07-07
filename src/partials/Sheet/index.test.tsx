@@ -3,8 +3,8 @@ import { render, screen } from '@testing-library/react'
 import { I18nextProvider } from 'react-i18next'
 import { i18next } from '../../i18n'
 import { Sheet } from './index'
-import { RecordList } from '../../Models/RecordList'
-import { Record } from '../../Models/Record'
+import { RecordList } from '../../models/RecordList'
+import { Record } from '../../models/Record'
 import userEvent from '@testing-library/user-event'
 
 test('Sheet: render', () => {
