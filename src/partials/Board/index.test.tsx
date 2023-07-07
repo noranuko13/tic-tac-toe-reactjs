@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { Board } from './index'
-import { SquareList } from '../../models/SquareList'
+import { SquareList } from '../../models'
 import { I18nextProvider } from 'react-i18next'
 import { i18next } from '../../i18n'
 

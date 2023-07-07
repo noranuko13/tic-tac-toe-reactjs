@@ -3,8 +3,7 @@ import { render, screen } from '@testing-library/react'
 import { Move } from './index'
 import { I18nextProvider } from 'react-i18next'
 import { i18next } from '../../i18n'
-import { RecordList } from '../../models/RecordList'
-import { Record } from '../../models/Record'
+import { RecordList, Record } from '../../models'
 
 test('Move: render', () => {
   render(
