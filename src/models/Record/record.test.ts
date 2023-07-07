@@ -1,5 +1,5 @@
-import { Record } from './record'
 import { SquareList } from '../SquareList'
+import { Record } from './record'
 
 const startRecord = new Record()
 

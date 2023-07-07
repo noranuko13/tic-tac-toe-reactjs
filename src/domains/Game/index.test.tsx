@@ -1,10 +1,9 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
-import { Game } from './index'
-import { I18nextProvider } from 'react-i18next'
-import { i18next } from '../../i18n'
 import userEvent from '@testing-library/user-event'
 import { UserEvent } from '@testing-library/user-event/setup/setup'
+import { I18nextProvider } from 'react-i18next'
+import { i18next } from '../../i18n'
+import { Game } from './index'
 
 const getLines = (): HTMLElement[] => {
   return screen.getAllByTestId('line')

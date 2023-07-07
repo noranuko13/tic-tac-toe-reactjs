@@ -1,6 +1,5 @@
-import React from 'react'
-import './style.scss'
 import { useTranslation } from 'react-i18next'
+import './style.scss'
 
 interface StatusProps {
   turnNumber: number

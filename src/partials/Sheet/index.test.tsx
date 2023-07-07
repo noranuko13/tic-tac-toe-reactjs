@@ -1,10 +1,9 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { I18nextProvider } from 'react-i18next'
 import { i18next } from '../../i18n'
+import { Record, RecordList } from '../../models'
 import { Sheet } from './index'
-import { RecordList, Record } from '../../models'
-import userEvent from '@testing-library/user-event'
 
 test('Sheet: render', () => {
   render(

@@ -1,8 +1,8 @@
-import { RecordList } from './record-list'
 import { Record } from '../Record'
 import { SquareList } from '../SquareList'
-import { DescRecordListIterator } from './desc-record-list-iterator'
 import { AscRecordListIterator } from './asc-record-list-iterator'
+import { DescRecordListIterator } from './desc-record-list-iterator'
+import { RecordList } from './record-list'
 
 const record0 = new Record()
 

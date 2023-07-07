@@ -1,6 +1,6 @@
-import { RecordList } from './record-list'
-import { IRecordListIterator } from './i-record-list-iterator'
 import { Record } from '../Record'
+import { IRecordListIterator } from './i-record-list-iterator'
+import { RecordList } from './record-list'
 
 export class DescRecordListIterator implements IRecordListIterator {
   private recordList: RecordList

@@ -1,7 +1,7 @@
 import React from 'react'
-import { Square } from '../Square'
-import { SquareList } from '../../models'
 import { BOARD_ROWS } from '../../constants'
+import { SquareList } from '../../models'
+import { Square } from '../Square'
 import './style.scss'
 
 interface BoardProps {

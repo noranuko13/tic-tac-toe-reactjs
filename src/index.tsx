@@ -1,14 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './index.scss'
-import reportWebVitals from './reportWebVitals'
-import { I18nextProvider } from 'react-i18next'
-import { i18next } from './i18n'
-import { Game } from './domains/Game'
-import { Wrapper } from './partials/Wrapper'
-import { Header } from './partials/Header'
-import { Footer } from './partials/Footer'
 import { ErrorBoundary } from 'react-error-boundary'
+import { I18nextProvider } from 'react-i18next'
+import { Game } from './domains'
+import { i18next } from './i18n'
+import './index.scss'
+import { Footer, Header, Wrapper } from './partials'
+import reportWebVitals from './reportWebVitals'
 
 // prettier-ignore
 const root = ReactDOM.createRoot(

@@ -1,7 +1,7 @@
 import { Record } from '../Record'
+import { SquareList } from '../SquareList'
 import { AscRecordListIterator } from './asc-record-list-iterator'
 import { DescRecordListIterator } from './desc-record-list-iterator'
-import { SquareList } from '../SquareList'
 
 export class RecordList {
   private readonly records: Record[]

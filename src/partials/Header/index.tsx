@@ -1,6 +1,5 @@
-import React from 'react'
-import './style.scss'
 import { useTranslation } from 'react-i18next'
+import './style.scss'
 
 export function Header() {
   const { t } = useTranslation()

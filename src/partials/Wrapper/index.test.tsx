@@ -1,8 +1,7 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
-import { Wrapper } from './index'
 import { I18nextProvider } from 'react-i18next'
 import { i18next } from '../../i18n'
+import { Wrapper } from './index'
 
 test('Wrapper: render', () => {
   render(

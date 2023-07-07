@@ -1,8 +1,7 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
-import { Status } from './index'
 import { I18nextProvider } from 'react-i18next'
 import { i18next } from '../../i18n'
+import { Status } from './index'
 
 const getStatus = (): HTMLElement => {
   return screen.getByTestId('status')

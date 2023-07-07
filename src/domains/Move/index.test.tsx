@@ -1,9 +1,8 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
-import { Move } from './index'
 import { I18nextProvider } from 'react-i18next'
 import { i18next } from '../../i18n'
-import { RecordList, Record } from '../../models'
+import { Record, RecordList } from '../../models'
+import { Move } from './index'
 
 test('Move: render', () => {
   render(

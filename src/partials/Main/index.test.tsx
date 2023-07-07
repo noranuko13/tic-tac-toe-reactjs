@@ -1,8 +1,7 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
-import { Main } from './index'
 import { I18nextProvider } from 'react-i18next'
 import { i18next } from '../../i18n'
+import { Main } from './index'
 
 test('Main: render', () => {
   render(
