@@ -5,6 +5,10 @@ import { i18next } from '../../i18n'
 import { Record, RecordList } from '../../models'
 import { Sheet } from './index'
 
+const getSheet = (): HTMLElement => {
+  return screen.getByTestId('sheet')
+}
+
 test('Sheet: render', () => {
   render(
     <I18nextProvider i18n={i18next}>
@@ -18,11 +22,11 @@ test('Sheet: render', () => {
     </I18nextProvider>
   )
 
-  const e = screen.getByTestId('sheet')
-  expect(e).toBeInTheDocument()
-  expect(e).toHaveTextContent('Text')
-  expect(e).toHaveTextContent('(x, y)')
-  expect(e).toHaveTextContent('Go to game start')
+  const sheet = getSheet()
+  expect(sheet).toBeInTheDocument()
+  expect(sheet).toHaveTextContent('Text')
+  expect(sheet).toHaveTextContent('(x, y)')
+  expect(sheet).toHaveTextContent('Go to game start')
 })
 
 test('Sheet: click sort button', async () => {
@@ -38,8 +42,8 @@ test('Sheet: click sort button', async () => {
   )
   const user = userEvent.setup()
 
-  const sortButton = screen.getByTestId('sheet-sort-button')
-  await user.click(sortButton)
+  const sort = screen.getByTestId('sheet-sort-button')
+  await user.click(sort)
   expect(mockFn).toHaveBeenCalled()
 })
 
@@ -56,7 +60,7 @@ test('Sheet: click move button', async () => {
   )
   const user = userEvent.setup()
 
-  const moveButton = screen.getByTestId('sheet-move-button')
-  await user.click(moveButton)
+  const move = screen.getByTestId('sheet-move-button')
+  await user.click(move)
   expect(mockFn).toHaveBeenCalled()
 })

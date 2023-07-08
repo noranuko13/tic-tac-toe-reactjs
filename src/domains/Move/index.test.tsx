@@ -15,6 +15,6 @@ test('Move: render', () => {
     </I18nextProvider>
   )
 
-  const e = screen.getByTestId('move')
-  expect(e).toBeInTheDocument()
+  const move = screen.getByTestId('move')
+  expect(move).toBeInTheDocument()
 })

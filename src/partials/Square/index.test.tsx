@@ -15,28 +15,31 @@ test('Square: render', () => {
     </I18nextProvider>
   )
 
-  const e = getSquare()
-  expect(e).toBeInTheDocument()
-  expect(e.classList.contains('active')).toBe(false)
-  expect(e.textContent).toBe('')
+  const square = getSquare()
+  expect(square).toBeInTheDocument()
+  expect(square.classList.contains('active')).toBe(false)
+  expect(square.textContent).toBe('')
 })
 
 test('Square: render X', () => {
   render(<Square value={'X'} onClick={() => {}} active={false} />)
 
-  expect(getSquare().textContent).toBe('X')
+  const square = getSquare()
+  expect(square.textContent).toBe('X')
 })
 
 test('Square: active', () => {
   render(<Square value={'X'} onClick={() => {}} active={true} />)
 
-  expect(getSquare().classList.contains('active')).toBe(true)
+  const square = getSquare()
+  expect(square.classList.contains('active')).toBe(true)
 })
 
 test('Square: not active', () => {
   render(<Square value={'X'} onClick={() => {}} active={false} />)
 
-  expect(getSquare().classList.contains('active')).toBe(false)
+  const square = getSquare()
+  expect(square.classList.contains('active')).toBe(false)
 })
 
 test('Square: click', async () => {

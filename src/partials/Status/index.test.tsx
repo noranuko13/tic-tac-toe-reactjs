@@ -14,26 +14,34 @@ test('Status: render', () => {
     </I18nextProvider>
   )
 
-  const e = getStatus()
-  expect(e).toBeInTheDocument()
+  const status = getStatus()
+  expect(status).toBeInTheDocument()
 })
 
 test('Status: render tie', () => {
   render(<Status turnNumber={9} winner={''} xIsNext={false} />)
-  expect(getStatus()).toHaveTextContent("It's a tie!")
+
+  const status = getStatus()
+  expect(status).toHaveTextContent("It's a tie!")
 })
 
 test('Status: render winner', () => {
   render(<Status turnNumber={7} winner={'X'} xIsNext={false} />)
-  expect(getStatus()).toHaveTextContent('Winner: X')
+
+  const status = getStatus()
+  expect(status).toHaveTextContent('Winner: X')
 })
 
 test('Status: render X', () => {
   render(<Status turnNumber={0} winner={''} xIsNext={true} />)
-  expect(getStatus()).toHaveTextContent('Next player: X')
+
+  const status = getStatus()
+  expect(status).toHaveTextContent('Next player: X')
 })
 
 test('Status: render O', () => {
   render(<Status turnNumber={1} winner={''} xIsNext={false} />)
-  expect(getStatus()).toHaveTextContent('Next player: O')
+
+  const status = getStatus()
+  expect(status).toHaveTextContent('Next player: O')
 })

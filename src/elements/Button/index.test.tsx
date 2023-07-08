@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { I18nextProvider } from 'react-i18next'
 import { i18next } from '../../i18n'
 import { Button } from './index'
@@ -12,7 +13,21 @@ test('Button: render', () => {
     </I18nextProvider>
   )
 
-  const e = screen.getByTestId('button')
-  expect(e).toBeInTheDocument()
-  expect(e).toHaveTextContent('#')
+  const button = screen.getByTestId('button')
+  expect(button).toBeInTheDocument()
+  expect(button).toHaveTextContent('#')
+})
+
+test('Button: click', async () => {
+  const mockFn = jest.fn()
+  render(
+    <Button data-testid={'button'} onClick={() => mockFn()}>
+      #
+    </Button>
+  )
+  const user = userEvent.setup()
+
+  const button = screen.getByTestId('button')
+  await user.click(button)
+  expect(mockFn).toHaveBeenCalled()
 })

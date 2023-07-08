@@ -4,6 +4,10 @@ import { i18next } from '../../i18n'
 import { SquareList } from '../../models'
 import { Board } from './index'
 
+const getBoard = (): HTMLElement => {
+  return screen.getByTestId('board')
+}
+
 test('Board: render', () => {
   render(
     <I18nextProvider i18n={i18next}>
@@ -11,6 +15,6 @@ test('Board: render', () => {
     </I18nextProvider>
   )
 
-  const e = screen.getByTestId('board')
+  const e = getBoard()
   expect(e).toBeInTheDocument()
 })

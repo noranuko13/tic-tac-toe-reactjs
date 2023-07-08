@@ -3,6 +3,10 @@ import { I18nextProvider } from 'react-i18next'
 import { i18next } from '../../i18n'
 import { Header } from './index'
 
+const getHeader = (): HTMLElement => {
+  return screen.getByTestId('header')
+}
+
 test('Header: render', () => {
   render(
     <I18nextProvider i18n={i18next}>
@@ -10,7 +14,7 @@ test('Header: render', () => {
     </I18nextProvider>
   )
 
-  const e = screen.getByTestId('header')
-  expect(e).toBeInTheDocument()
-  expect(e).toHaveTextContent('Tic Tac Toe')
+  const header = getHeader()
+  expect(header).toBeInTheDocument()
+  expect(header).toHaveTextContent('Tic Tac Toe')
 })
