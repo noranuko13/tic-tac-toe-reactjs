@@ -12,4 +12,5 @@ test('Footer: render', () => {
 
   const e = screen.getByTestId('footer')
   expect(e).toBeInTheDocument()
+  expect(e).toHaveTextContent('noranuko13/tic-tac-toe-reactjs | GitHub')
 })
