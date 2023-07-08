@@ -107,6 +107,14 @@ test('Game: the winner is decided, nothing will be done', async () => {
   expect(squares[7]).toHaveTextContent('')
 })
 
+test('Game: draw', async () => {
+  render(<Game />)
+  const user = userEvent.setup()
+  const squares = await simulateDrawGame(user)
+
+  await expect(user.click(squares[0])).resolves.not.toThrow()
+})
+
 test('Game: status will change.', async () => {
   render(<Game />)
   const user = userEvent.setup()

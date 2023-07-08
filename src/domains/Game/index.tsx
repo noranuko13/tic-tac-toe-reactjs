@@ -11,6 +11,9 @@ export function Game() {
   const [xIsNext, setXIsNext] = useState<boolean>(true)
 
   const handleClick = (i: number) => {
+    if (turnNumber === 9) {
+      return
+    }
     const currentRecordList = recordList.createRecordList(turnNumber)
     const currentSquareList = currentRecordList.createLastSquareList()
     if (currentSquareList.getWinner() || currentSquareList.getSquare(i)) {
