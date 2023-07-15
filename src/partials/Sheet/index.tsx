@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next'
 import { OrderType } from '../../constants'
 import { Button } from '../../elements'
-import { RecordList } from '../../models'
+import { RecordList, Turn } from '../../models'
 import './style.scss'
 
 interface SheetProps {
   recordList: RecordList
-  stepNumber: number
+  turn: Turn
   jumpTo: (step: number) => void
   sortRecords: () => void
   orderType: OrderType
@@ -40,7 +40,7 @@ export function Sheet(props: SheetProps) {
     tbodyTrs.push(
       <tr
         key={turnNumber}
-        className={props.stepNumber === turnNumber ? 'active' : ''}
+        className={props.turn.eq(turnNumber) ? 'active' : ''}
         data-testid="line"
       >
         <th scope="row">

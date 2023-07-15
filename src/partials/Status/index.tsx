@@ -1,23 +1,23 @@
 import { useTranslation } from 'react-i18next'
+import { Turn } from '../../models'
 import './style.scss'
 
 interface StatusProps {
-  turnNumber: number
+  turn: Turn
   winner: string
-  xIsNext: boolean
 }
 
 export function Status(props: StatusProps) {
   const { t } = useTranslation()
 
   const statusInnerText = () => {
-    if (props.turnNumber === 9) {
+    if (props.turn.isDraw()) {
       return t('board.tie')
     }
     if (props.winner) {
       return t('board.winner', { name: props.winner })
     }
-    return t('board.next', { name: props.xIsNext ? 'X' : 'O' })
+    return t('board.next', { name: props.turn.getNextPlayer() })
   }
 
   return (

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Record, RecordList } from '../../models'
+import { Record, RecordList, Turn } from '../../models'
 import { Board, Main, Status } from '../../partials'
 import { Console } from '../../partials/Console'
 import { Move } from '../Move'
@@ -8,41 +8,34 @@ export function Game() {
   const [recordList, setRecordList] = useState<RecordList>(
     new RecordList([new Record()])
   )
-  const [turnNumber, setTurnNumber] = useState<number>(0)
-  const [xIsNext, setXIsNext] = useState<boolean>(true)
+  const [turn, setTurn] = useState<Turn>(new Turn(0))
 
   const handleClick = (i: number) => {
-    if (turnNumber === 9) {
+    if (turn.isDraw()) {
       return
     }
-    const currentRecordList = recordList.createRecordList(turnNumber)
+    const currentRecordList = recordList.createRecordList(turn.getRecordIndex())
     const currentSquareList = currentRecordList.createLastSquareList()
     if (currentSquareList.getWinner() || currentSquareList.getSquare(i)) {
       return
     }
-    currentSquareList.setSquare(i, xIsNext ? 'X' : 'O')
+    currentSquareList.setSquare(i, turn.getNextPlayer())
     currentRecordList.addRecord(
       new Record(currentSquareList, [(i % 3) + 1, Math.floor(i / 3) + 1])
     )
     setRecordList(currentRecordList)
-    setTurnNumber(turnNumber + 1)
-    setXIsNext(!xIsNext)
+    setTurn(turn.createNextTurn())
   }
 
   const newGame = () => {
     setRecordList(new RecordList([new Record()]))
-    setTurnNumber(0)
-    setXIsNext(true)
+    setTurn(new Turn(0))
   }
 
-  const currentSquareList = recordList.getRecord(turnNumber).getSquareList()
-  const status = (
-    <Status
-      turnNumber={turnNumber}
-      winner={currentSquareList.getWinner()}
-      xIsNext={xIsNext}
-    />
-  )
+  const currentSquareList = recordList
+    .getRecord(turn.getRecordIndex())
+    .getSquareList()
+  const status = <Status turn={turn} winner={currentSquareList.getWinner()} />
   const board = (
     <Board squareList={currentSquareList} onClick={(i) => handleClick(i)} />
   )
@@ -52,10 +45,9 @@ export function Game() {
   const move = (
     <Move
       recordList={recordList}
-      stepNumber={turnNumber}
-      jumpTo={(step: number) => {
-        setTurnNumber(step)
-        setXIsNext(step % 2 === 0)
+      turn={turn}
+      jumpTo={(turnNumber: number) => {
+        setTurn(new Turn(turnNumber))
       }}
     />
   )

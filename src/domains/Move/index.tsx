@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { OrderType } from '../../constants'
-import { RecordList } from '../../models'
+import { RecordList, Turn } from '../../models'
 import { Sheet } from '../../partials'
 
 interface MoveProps {
   recordList: RecordList
-  stepNumber: number
+  turn: Turn
   jumpTo: any
 }
 

@@ -14,8 +14,8 @@ export class RecordList {
     this.records = records
   }
 
-  createRecordList(stepNumber: number): RecordList {
-    return new RecordList(this.records.slice(0, stepNumber + 1))
+  createRecordList(turnNumber: number): RecordList {
+    return new RecordList(this.records.slice(0, turnNumber + 1))
   }
 
   createLastSquareList(): SquareList {
