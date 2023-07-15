@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Record, RecordList } from '../../models'
 import { Board, Main, Status } from '../../partials'
+import { Console } from '../../partials/Console'
 import { Move } from '../Move'
 
 export function Game() {
@@ -28,6 +29,12 @@ export function Game() {
     setXIsNext(!xIsNext)
   }
 
+  const newGame = () => {
+    setRecordList(new RecordList([new Record()]))
+    setTurnNumber(0)
+    setXIsNext(true)
+  }
+
   const currentSquareList = recordList.getRecord(turnNumber).getSquareList()
   const status = (
     <Status
@@ -39,6 +46,8 @@ export function Game() {
   const board = (
     <Board squareList={currentSquareList} onClick={(i) => handleClick(i)} />
   )
+
+  const console = <Console newGame={() => newGame()} />
 
   const move = (
     <Move
@@ -53,7 +62,7 @@ export function Game() {
 
   return (
     <div data-testid="game">
-      <Main status={status} board={board} move={move} />
+      <Main board={board} status={status} console={console} move={move} />
     </div>
   )
 }

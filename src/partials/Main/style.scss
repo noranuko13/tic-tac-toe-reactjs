@@ -1,11 +1,11 @@
 .main {
-  @apply pb-4 flex flex-col sm:flex-row;
+  @apply pb-4 flex flex-col gap-6 sm:flex-row;
 
   .left {
-    @apply sm:w-2/5 pb-3 text-center;
+    @apply sm:w-2/5 flex flex-col gap-3;
   }
 
   .right {
-    @apply sm:w-3/5 pb-2 text-center;
+    @apply sm:w-3/5;
   }
 }

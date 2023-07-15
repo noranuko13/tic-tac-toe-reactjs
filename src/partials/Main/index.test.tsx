@@ -10,13 +10,19 @@ const getMain = (): HTMLElement => {
 test('Main: render', () => {
   render(
     <I18nextProvider i18n={i18next}>
-      <Main status={<>#status</>} board={<>#board</>} move={<>#move</>} />
+      <Main
+        board={<>#board</>}
+        status={<>#status</>}
+        console={<>#console</>}
+        move={<>#move</>}
+      />
     </I18nextProvider>
   )
 
   const main = getMain()
   expect(main).toBeInTheDocument()
-  expect(main).toHaveTextContent('#status')
   expect(main).toHaveTextContent('#board')
+  expect(main).toHaveTextContent('#status')
+  expect(main).toHaveTextContent('#console')
   expect(main).toHaveTextContent('#move')
 })

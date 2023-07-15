@@ -138,6 +138,21 @@ test('Game: status will change.', async () => {
   expect(status).toHaveTextContent('Winner: X')
 })
 
+test('Game: newGame', async () => {
+  render(<Game />)
+  const user = userEvent.setup()
+  await simulateDrawGame(user)
+
+  const game = screen.getByTestId('game')
+  expect(game).toHaveTextContent("It's a tie!")
+  expect(game).toHaveTextContent('(1, 3)')
+
+  await user.click(screen.getByTestId('new-game-button'))
+
+  expect(game).toHaveTextContent('Next player: X')
+  expect(game).not.toHaveTextContent('(1, 3)')
+})
+
 test('Game: texts will change.', async () => {
   render(<Game />)
   const user = userEvent.setup()
