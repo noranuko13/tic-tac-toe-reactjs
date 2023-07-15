@@ -67,10 +67,14 @@ test('SquareList: getWinner: return winner O', () => {
   expect(winOSquareList.getWinner()).toBe('O')
 })
 
-test('SquareList: victoryLine: return nothing', () => {
-  expect(initSquareList.victoryLine()).toStrictEqual([])
-})
-
-test('SquareList: victoryLine: return line', () => {
-  expect(winXSquareList.victoryLine()).toStrictEqual([2, 5, 8])
+test('SquareList: isActive', () => {
+  expect(initSquareList.isActive(1)).toBe(false)
+  expect(winXSquareList.isActive(2)).toBe(true)
+  expect(initSquareList.isActive(3)).toBe(false)
+  expect(initSquareList.isActive(4)).toBe(false)
+  expect(winXSquareList.isActive(5)).toBe(true)
+  expect(initSquareList.isActive(6)).toBe(false)
+  expect(initSquareList.isActive(7)).toBe(false)
+  expect(winXSquareList.isActive(8)).toBe(true)
+  expect(initSquareList.isActive(9)).toBe(false)
 })

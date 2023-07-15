@@ -30,7 +30,7 @@ export function Board(props: BoardProps) {
                 <Square
                   key={r}
                   value={props.squareList.getSquare(r)}
-                  active={props.squareList.victoryLine().includes(r)}
+                  active={props.squareList.isActive(r)}
                   onClick={() => props.onClick(r)}
                 />
               )

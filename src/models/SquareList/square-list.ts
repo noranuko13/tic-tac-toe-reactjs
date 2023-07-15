@@ -31,7 +31,11 @@ export class SquareList {
     return ''
   }
 
-  victoryLine(): ReadonlyArray<number> {
+  isActive(index: number): boolean {
+    return this.victoryLine().includes(index)
+  }
+
+  private victoryLine(): ReadonlyArray<number> {
     const index = this.indexOfWinner()
     if (index !== -1) {
       return VICTORY_LINES[index]
