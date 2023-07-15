@@ -4,7 +4,7 @@ import './style.scss'
 interface SquareProps {
   value: string
   active: boolean
-  onClick: () => void
+  moveForward: () => void
 }
 
 export function Square(props: SquareProps) {
@@ -19,7 +19,7 @@ export function Square(props: SquareProps) {
   return (
     <button
       data-testid="square"
-      onClick={() => props.onClick()}
+      onClick={() => props.moveForward()}
       className={buttonClassName}
     >
       {props.value}

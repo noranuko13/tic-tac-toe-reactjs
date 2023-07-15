@@ -10,18 +10,18 @@ export function Game() {
   )
   const [turn, setTurn] = useState<Turn>(new Turn(0))
 
-  const handleClick = (i: number) => {
+  const moveForward = (index: number) => {
     if (turn.isDraw()) {
       return
     }
     const currentRecordList = recordList.createRecordList(turn.getRecordIndex())
-    const currentSquareList = currentRecordList.createLastSquareList()
-    if (currentSquareList.getWinner() || currentSquareList.getSquare(i)) {
+    const squareList = currentRecordList.createLastSquareList()
+    if (squareList.getWinner() || squareList.getSquare(index)) {
       return
     }
-    currentSquareList.setSquare(i, turn.getNextPlayer())
+    squareList.setSquare(index, turn.getNextPlayer())
     currentRecordList.addRecord(
-      new Record(currentSquareList, [(i % 3) + 1, Math.floor(i / 3) + 1])
+      new Record(squareList, [(index % 3) + 1, Math.floor(index / 3) + 1])
     )
     setRecordList(currentRecordList)
     setTurn(turn.createNextTurn())
@@ -32,29 +32,27 @@ export function Game() {
     setTurn(new Turn(0))
   }
 
-  const currentSquareList = recordList
-    .getRecord(turn.getRecordIndex())
-    .getSquareList()
-  const status = <Status turn={turn} winner={currentSquareList.getWinner()} />
-  const board = (
-    <Board squareList={currentSquareList} onClick={(i) => handleClick(i)} />
-  )
-
-  const console = <Console newGame={() => newGame()} />
-
-  const move = (
-    <Move
-      recordList={recordList}
-      turn={turn}
-      jumpTo={(turnNumber: number) => {
-        setTurn(new Turn(turnNumber))
-      }}
-    />
-  )
+  const squareList = recordList.getRecord(turn.getRecordIndex()).getSquareList()
 
   return (
     <div data-testid="game">
-      <Main board={board} status={status} console={console} move={move} />
+      <Main
+        board={
+          <Board
+            squareList={squareList}
+            moveForward={(index: number) => moveForward(index)}
+          />
+        }
+        status={<Status turn={turn} winner={squareList.getWinner()} />}
+        console={<Console newGame={() => newGame()} />}
+        move={
+          <Move
+            recordList={recordList}
+            turn={turn}
+            jumpTo={(turnNumber: number) => setTurn(new Turn(turnNumber))}
+          />
+        }
+      />
     </div>
   )
 }

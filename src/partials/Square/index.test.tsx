@@ -11,7 +11,7 @@ const getSquare = (): HTMLElement => {
 test('Square: render', () => {
   render(
     <I18nextProvider i18n={i18next}>
-      <Square value={''} onClick={() => {}} active={false} />
+      <Square value={''} moveForward={() => {}} active={false} />
     </I18nextProvider>
   )
 
@@ -22,21 +22,21 @@ test('Square: render', () => {
 })
 
 test('Square: render X', () => {
-  render(<Square value={'X'} onClick={() => {}} active={false} />)
+  render(<Square value={'X'} moveForward={() => {}} active={false} />)
 
   const square = getSquare()
   expect(square.textContent).toBe('X')
 })
 
 test('Square: active', () => {
-  render(<Square value={'X'} onClick={() => {}} active={true} />)
+  render(<Square value={'X'} moveForward={() => {}} active={true} />)
 
   const square = getSquare()
   expect(square.classList.contains('active')).toBe(true)
 })
 
 test('Square: not active', () => {
-  render(<Square value={'X'} onClick={() => {}} active={false} />)
+  render(<Square value={'X'} moveForward={() => {}} active={false} />)
 
   const square = getSquare()
   expect(square.classList.contains('active')).toBe(false)
@@ -44,7 +44,7 @@ test('Square: not active', () => {
 
 test('Square: click', async () => {
   const mockFn = jest.fn()
-  render(<Square value={'X'} onClick={() => mockFn()} active={false} />)
+  render(<Square value={'X'} moveForward={() => mockFn()} active={false} />)
   const user = userEvent.setup()
 
   const square = getSquare()

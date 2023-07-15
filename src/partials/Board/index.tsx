@@ -6,7 +6,7 @@ import './style.scss'
 
 interface BoardProps {
   squareList: SquareList
-  onClick: (index: number) => void
+  moveForward: (index: number) => void
 }
 
 export function Board(props: BoardProps) {
@@ -31,7 +31,7 @@ export function Board(props: BoardProps) {
                   key={r}
                   value={props.squareList.getSquare(r)}
                   active={props.squareList.isActive(r)}
-                  onClick={() => props.onClick(r)}
+                  moveForward={() => props.moveForward(r)}
                 />
               )
             })}
