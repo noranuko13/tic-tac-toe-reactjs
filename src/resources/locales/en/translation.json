@@ -9,7 +9,7 @@
     "newGame": "New Game"
   },
   "move": {
-    "description": "Text",
+    "description": "Description",
     "coordinate": "(x, y)",
     "start": "Go to game start",
     "goto": "Go to move #{{turnNumber}}"
