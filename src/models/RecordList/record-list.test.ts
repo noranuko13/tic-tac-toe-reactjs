@@ -11,35 +11,35 @@ const squareList1 = new SquareList([
   ...['', '', ''],
   ...['', '', ''],
 ])
-const record1 = new Record(squareList1, [1, 1])
+const record1 = new Record(squareList1, 0)
 
 const squareList2 = new SquareList([
   ...['X', 'O', ''],
   ...['', '', ''],
   ...['', '', ''],
 ])
-const record2 = new Record(squareList2, [2, 1])
+const record2 = new Record(squareList2, 1)
 
 const squareList3 = new SquareList([
   ...['X', 'O', ''],
   ...['X', '', ''],
   ...['', '', ''],
 ])
-const record3 = new Record(squareList3, [1, 2])
+const record3 = new Record(squareList3, 3)
 
 const squareList4 = new SquareList([
   ...['X', 'O', ''],
   ...['X', 'O', ''],
   ...['', '', ''],
 ])
-const record4 = new Record(squareList4, [2, 2])
+const record4 = new Record(squareList4, 4)
 
 const squareList5 = new SquareList([
   ...['X', 'O', ''],
   ...['X', 'O', ''],
   ...['X', '', ''],
 ])
-const record5 = new Record(squareList5, [1, 3])
+const record5 = new Record(squareList5, 6)
 
 const recordList5 = new RecordList([
   record0,

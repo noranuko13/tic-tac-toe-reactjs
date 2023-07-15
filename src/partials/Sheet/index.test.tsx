@@ -25,7 +25,7 @@ test('Sheet: render', () => {
   const sheet = getSheet()
   expect(sheet).toBeInTheDocument()
   expect(sheet).toHaveTextContent('Description')
-  expect(sheet).toHaveTextContent('(x, y)')
+  expect(sheet).toHaveTextContent('Notation')
   expect(sheet).toHaveTextContent('Go to game start')
 })
 

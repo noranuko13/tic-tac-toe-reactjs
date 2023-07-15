@@ -10,7 +10,7 @@
   },
   "move": {
     "description": "Description",
-    "coordinate": "(x, y)",
+    "coordinate": "Notation",
     "start": "Go to game start",
     "goto": "Go to move #{{turnNumber}}"
   }

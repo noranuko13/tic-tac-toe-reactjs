@@ -145,12 +145,12 @@ test('Game: newGame', async () => {
 
   const game = screen.getByTestId('game')
   expect(game).toHaveTextContent("It's a tie!")
-  expect(game).toHaveTextContent('(1, 3)')
+  expect(game).toHaveTextContent('a3')
 
   await user.click(screen.getByTestId('new-game-button'))
 
   expect(game).toHaveTextContent('Next player: X')
-  expect(game).not.toHaveTextContent('(1, 3)')
+  expect(game).not.toHaveTextContent('a3')
 })
 
 test('Game: texts will change.', async () => {
@@ -219,23 +219,23 @@ test('Game: show past moves', async () => {
   expect(getMoveButtons()[4]).toBeUndefined()
 })
 
-test('Game: display xy coordinates', async () => {
+test('Game: display notation coordinates', async () => {
   render(<Game />)
   const user = userEvent.setup()
 
   await simulateDrawGame(user)
 
-  const xys = screen.getAllByTestId('xy')
-  expect(xys[0]).toHaveTextContent('')
-  expect(xys[1]).toHaveTextContent('(1, 1)') // #1
-  expect(xys[2]).toHaveTextContent('(1, 2)') // #2
-  expect(xys[3]).toHaveTextContent('(2, 1)') // #3
-  expect(xys[4]).toHaveTextContent('(2, 2)') // #4
-  expect(xys[5]).toHaveTextContent('(3, 2)') // #5
-  expect(xys[6]).toHaveTextContent('(3, 1)') // #6
-  expect(xys[7]).toHaveTextContent('(3, 3)') // #7
-  expect(xys[8]).toHaveTextContent('(2, 3)') // #8
-  expect(xys[9]).toHaveTextContent('(1, 3)') // #9
+  const notations = screen.getAllByTestId('notation')
+  expect(notations[0]).toHaveTextContent('')
+  expect(notations[1]).toHaveTextContent('a1') // #1
+  expect(notations[2]).toHaveTextContent('a2') // #2
+  expect(notations[3]).toHaveTextContent('b1') // #3
+  expect(notations[4]).toHaveTextContent('b2') // #4
+  expect(notations[5]).toHaveTextContent('c2') // #5
+  expect(notations[6]).toHaveTextContent('c1') // #6
+  expect(notations[7]).toHaveTextContent('c3') // #7
+  expect(notations[8]).toHaveTextContent('b3') // #8
+  expect(notations[9]).toHaveTextContent('a3') // #9
 })
 
 test('Game: highlight the current line', async () => {

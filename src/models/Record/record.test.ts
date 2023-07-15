@@ -9,9 +9,13 @@ const tieSquareList = new SquareList([
   ...['X', 'O', 'X'],
 ])
 
-const tieXy = [3, 3]
+const tieRecord = new Record(tieSquareList, 8)
 
-const tieRecord = new Record(tieSquareList, tieXy)
+test('Record: constructor: throw RangeError', () => {
+  const message = 'Index range from -1 to 8'
+  expect(() => new Record(tieSquareList, -2)).toThrow(message)
+  expect(() => new Record(tieSquareList, 9)).toThrow(message)
+})
 
 test('Record: getSquareList: return nothing', () => {
   expect(startRecord.getSquareList()).toStrictEqual(new SquareList())
@@ -21,10 +25,10 @@ test('Record: getSquareList: return tie', () => {
   expect(tieRecord.getSquareList()).toBe(tieSquareList)
 })
 
-test('Record: getXyStr: return nothing', () => {
-  expect(startRecord.getXyStr()).toBe('')
+test('Record: getNotation: return nothing', () => {
+  expect(startRecord.getNotation()).toBe('')
 })
 
-test('Record: getXyStr: return tie', () => {
-  expect(tieRecord.getXyStr()).toBe('(3, 3)')
+test('Record: getNotation: return tie', () => {
+  expect(tieRecord.getNotation()).toBe('c3')
 })

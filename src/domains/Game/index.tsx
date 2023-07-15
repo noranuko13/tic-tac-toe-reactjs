@@ -20,9 +20,7 @@ export function Game() {
       return
     }
     squareList.setSquare(index, turn.getNextPlayer())
-    currentRecordList.addRecord(
-      new Record(squareList, [(index % 3) + 1, Math.floor(index / 3) + 1])
-    )
+    currentRecordList.addRecord(new Record(squareList, index))
     setRecordList(currentRecordList)
     setTurn(turn.createNextTurn())
   }
