@@ -12,12 +12,12 @@ export function Status(props: StatusProps) {
 
   const statusInnerText = () => {
     if (props.turn.isDraw()) {
-      return t('board.tie')
+      return t('status.tie')
     }
     if (props.winner) {
-      return t('board.winner', { name: props.winner })
+      return t('status.winner', { name: props.winner })
     }
-    return t('board.next', { name: props.turn.getNextPlayer() })
+    return t('status.next', { name: props.turn.getNextPlayer() })
   }
 
   return (
