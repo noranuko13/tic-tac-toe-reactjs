@@ -15,6 +15,6 @@ test('Board: render', () => {
     </I18nextProvider>
   )
 
-  const e = getBoard()
-  expect(e).toBeInTheDocument()
+  const board = getBoard()
+  expect(board).toBeInTheDocument()
 })
