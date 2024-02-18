@@ -28,4 +28,4 @@ jobs:
         with:
           branch: gh-pages
           single-commit: true
-          folder: build
+          folder: dist

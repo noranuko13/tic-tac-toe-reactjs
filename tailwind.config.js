@@ -1,5 +1,5 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+// noinspection JSUnusedGlobalSymbols
+export default {
   content: [
     //
     './src/**/*.{ts,tsx}',

@@ -6,8 +6,9 @@
   },
   "extends": [
     //
-    "plugin:react/recommended",
-    "standard",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",
@@ -21,6 +22,7 @@
   "plugins": [
     //
     "react",
+    "react-refresh",
     "@typescript-eslint"
   ],
   "rules": {
@@ -28,11 +30,20 @@
     "@typescript-eslint/no-use-before-define": ["error"],
     "yoda": ["error", "never", { "exceptRange": true }],
     "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "react-refresh/only-export-components": [
+      "warn",
+      { "allowConstantExport": true }
+    ]
   },
   "settings": {
     "react": {
       "version": "detect"
     }
-  }
+  },
+  "ignorePatterns": [
+    //
+    "dist",
+    ".eslintrc.json"
+  ]
 }
