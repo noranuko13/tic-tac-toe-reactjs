@@ -1,8 +1,10 @@
+import { expect, test } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { I18nextProvider } from 'react-i18next'
 import { i18next } from '../../i18n'
 import { Button } from './index'
+import { vi } from 'vitest'
 
 test('Button: render', () => {
   render(
@@ -19,7 +21,7 @@ test('Button: render', () => {
 })
 
 test('Button: click', async () => {
-  const mockFn = jest.fn()
+  const mockFn = vi.fn()
   render(
     <Button data-testid={'button'} onClick={() => mockFn()}>
       #

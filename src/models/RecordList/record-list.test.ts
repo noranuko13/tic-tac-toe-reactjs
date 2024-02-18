@@ -1,3 +1,4 @@
+import { expect, test } from 'vitest'
 import { Record } from '../Record'
 import { SquareList } from '../SquareList'
 import { AscRecordListIterator } from './asc-record-list-iterator'

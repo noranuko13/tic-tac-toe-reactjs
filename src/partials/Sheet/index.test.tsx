@@ -1,9 +1,11 @@
+import { expect, test } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { I18nextProvider } from 'react-i18next'
 import { i18next } from '../../i18n'
 import { Record, RecordList, Turn } from '../../models'
 import { Sheet } from './index'
+import { vi } from 'vitest'
 
 const getSheet = (): HTMLElement => {
   return screen.getByTestId('sheet')
@@ -30,7 +32,7 @@ test('Sheet: render', () => {
 })
 
 test('Sheet: click sort button', async () => {
-  const mockFn = jest.fn()
+  const mockFn = vi.fn()
   render(
     <Sheet
       recordList={new RecordList([new Record()])}
@@ -48,7 +50,7 @@ test('Sheet: click sort button', async () => {
 })
 
 test('Sheet: click move button', async () => {
-  const mockFn = jest.fn()
+  const mockFn = vi.fn()
   render(
     <Sheet
       recordList={new RecordList([new Record()])}

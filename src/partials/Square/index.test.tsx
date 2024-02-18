@@ -1,8 +1,10 @@
+import { expect, test } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { I18nextProvider } from 'react-i18next'
 import { i18next } from '../../i18n'
 import { Square } from './index'
+import { vi } from 'vitest'
 
 const getSquare = (): HTMLElement => {
   return screen.getByTestId('square')
@@ -43,7 +45,7 @@ test('Square: not active', () => {
 })
 
 test('Square: click', async () => {
-  const mockFn = jest.fn()
+  const mockFn = vi.fn()
   render(<Square value={'X'} moveForward={() => mockFn()} active={false} />)
   const user = userEvent.setup()
 

@@ -1,7 +1,9 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
 
 // noinspection JSUnusedGlobalSymbols
 export default defineConfig({
-  plugins: [react()],
+  test: {
+    environment: 'jsdom',
+    setupFiles: ['./src/setupTests.ts'],
+  },
 })

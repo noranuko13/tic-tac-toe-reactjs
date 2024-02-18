@@ -1,3 +1,4 @@
+import { expect, test } from 'vitest'
 import { SquareList } from './square-list'
 
 const initSquareList = new SquareList()

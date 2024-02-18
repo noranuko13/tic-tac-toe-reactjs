@@ -1,6 +1,7 @@
+import { expect, test } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { UserEvent } from '@testing-library/user-event/setup/setup'
+import { UserEvent } from '@testing-library/user-event'
 import { I18nextProvider } from 'react-i18next'
 import { i18next } from '../../i18n'
 import { Game } from './index'

@@ -1,8 +1,10 @@
+import { expect, test } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { I18nextProvider } from 'react-i18next'
 import { i18next } from '../../i18n'
 import { Console } from './index'
+import { vi } from 'vitest'
 
 const getConsole = (): HTMLElement => {
   return screen.getByTestId('console')
@@ -25,7 +27,7 @@ test('Console: render', () => {
 })
 
 test('Console: click', async () => {
-  const mockFn = jest.fn()
+  const mockFn = vi.fn()
   render(<Console newGame={() => mockFn()} />)
   const user = userEvent.setup()
 

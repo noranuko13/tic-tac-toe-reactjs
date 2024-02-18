@@ -1,3 +1,4 @@
+import { expect, test } from 'vitest'
 import { Turn } from './turn'
 
 const turn0 = new Turn(0)
