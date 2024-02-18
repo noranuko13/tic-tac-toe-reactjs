@@ -11,7 +11,7 @@ test('Wrapper: render', () => {
   render(
     <I18nextProvider i18n={i18next}>
       <Wrapper>#</Wrapper>
-    </I18nextProvider>
+    </I18nextProvider>,
   )
 
   const wrapper = getWrapper()

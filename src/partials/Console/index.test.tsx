@@ -16,7 +16,7 @@ test('Console: render', () => {
   render(
     <I18nextProvider i18n={i18next}>
       <Console newGame={() => {}} />
-    </I18nextProvider>
+    </I18nextProvider>,
   )
 
   const console = getConsole()

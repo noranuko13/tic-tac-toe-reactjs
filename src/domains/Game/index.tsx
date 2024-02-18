@@ -6,7 +6,7 @@ import { Move } from '../Move'
 
 export function Game() {
   const [recordList, setRecordList] = useState<RecordList>(
-    new RecordList([new Record()])
+    new RecordList([new Record()]),
   )
   const [turn, setTurn] = useState<Turn>(new Turn(0))
 

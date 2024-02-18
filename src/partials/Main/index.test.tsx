@@ -16,7 +16,7 @@ test('Main: render', () => {
         console={<>#console</>}
         move={<>#move</>}
       />
-    </I18nextProvider>
+    </I18nextProvider>,
   )
 
   const main = getMain()

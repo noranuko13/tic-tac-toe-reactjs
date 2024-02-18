@@ -11,7 +11,7 @@ test('Footer: render', () => {
   render(
     <I18nextProvider i18n={i18next}>
       <Footer />
-    </I18nextProvider>
+    </I18nextProvider>,
   )
 
   const footer = getFooter()

@@ -12,7 +12,7 @@ test('Move: render', () => {
         turn={new Turn(0)}
         jumpTo={() => {}}
       />
-    </I18nextProvider>
+    </I18nextProvider>,
   )
 
   const move = screen.getByTestId('move')

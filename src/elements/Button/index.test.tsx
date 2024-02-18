@@ -10,7 +10,7 @@ test('Button: render', () => {
       <Button data-testid={'button'} onClick={() => {}}>
         #
       </Button>
-    </I18nextProvider>
+    </I18nextProvider>,
   )
 
   const button = screen.getByTestId('button')
@@ -23,7 +23,7 @@ test('Button: click', async () => {
   render(
     <Button data-testid={'button'} onClick={() => mockFn()}>
       #
-    </Button>
+    </Button>,
   )
   const user = userEvent.setup()
 

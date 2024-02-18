@@ -58,10 +58,10 @@ test('RecordList: constructor: throw RangeError', () => {
 
 test('RecordList: createRecordList', () => {
   expect(recordList5.createRecordList(0)).toStrictEqual(
-    new RecordList([record0])
+    new RecordList([record0]),
   )
   expect(recordList5.createRecordList(2)).toStrictEqual(
-    new RecordList([record0, record1, record2])
+    new RecordList([record0, record1, record2]),
   )
   expect(recordList5.createRecordList(5)).toStrictEqual(recordList5)
 })
@@ -80,11 +80,11 @@ test('RecordList: addRecord', () => {
   const recordList2 = new RecordList([record0, record1, record2])
   recordList2.addRecord(record3)
   expect(recordList2).toStrictEqual(
-    new RecordList([record0, record1, record2, record3])
+    new RecordList([record0, record1, record2, record3]),
   )
   recordList2.addRecord(record4)
   expect(recordList2).toStrictEqual(
-    new RecordList([record0, record1, record2, record3, record4])
+    new RecordList([record0, record1, record2, record3, record4]),
   )
 })
 

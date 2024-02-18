@@ -16,10 +16,10 @@ const winOSquareList = new SquareList([
 
 test('SquareList: constructor: throw RangeError', () => {
   expect(() => new SquareList(Array(1).fill(''))).toThrow(
-    'The length of squares is 9'
+    'The length of squares is 9',
   )
   expect(() => new SquareList(Array(10).fill(''))).toThrow(
-    'The length of squares is 9'
+    'The length of squares is 9',
   )
 })
 

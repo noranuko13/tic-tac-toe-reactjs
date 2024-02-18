@@ -41,7 +41,7 @@ test('Game: render', () => {
   render(
     <I18nextProvider i18n={i18next}>
       <Game />
-    </I18nextProvider>
+    </I18nextProvider>,
   )
 
   const e = screen.getByTestId('game')

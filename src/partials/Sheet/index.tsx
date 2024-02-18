@@ -55,7 +55,7 @@ export function Sheet(props: SheetProps) {
           {turnNumber !== 0 ? t('move.goto', { turnNumber }) : t('move.start')}
         </td>
         <td data-testid="notation">{iterator.getNextRecord().getNotation()}</td>
-      </tr>
+      </tr>,
     )
     iterator.advance()
   }

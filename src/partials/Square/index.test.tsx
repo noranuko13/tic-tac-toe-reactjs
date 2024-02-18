@@ -12,7 +12,7 @@ test('Square: render', () => {
   render(
     <I18nextProvider i18n={i18next}>
       <Square value={''} moveForward={() => {}} active={false} />
-    </I18nextProvider>
+    </I18nextProvider>,
   )
 
   const square = getSquare()

@@ -12,7 +12,7 @@ test('Status: render', () => {
   render(
     <I18nextProvider i18n={i18next}>
       <Status turn={new Turn(0)} winner={''} />
-    </I18nextProvider>
+    </I18nextProvider>,
   )
 
   const status = getStatus()

@@ -11,7 +11,7 @@ test('Header: render', () => {
   render(
     <I18nextProvider i18n={i18next}>
       <Header />
-    </I18nextProvider>
+    </I18nextProvider>,
   )
 
   const header = getHeader()

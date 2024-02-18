@@ -19,7 +19,7 @@ test('Sheet: render', () => {
         sortRecords={() => {}}
         orderType={'asc'}
       />
-    </I18nextProvider>
+    </I18nextProvider>,
   )
 
   const sheet = getSheet()
@@ -38,7 +38,7 @@ test('Sheet: click sort button', async () => {
       jumpTo={() => {}}
       sortRecords={() => mockFn()}
       orderType={'asc'}
-    />
+    />,
   )
   const user = userEvent.setup()
 
@@ -56,7 +56,7 @@ test('Sheet: click move button', async () => {
       jumpTo={() => mockFn()}
       sortRecords={() => {}}
       orderType={'asc'}
-    />
+    />,
   )
   const user = userEvent.setup()
 

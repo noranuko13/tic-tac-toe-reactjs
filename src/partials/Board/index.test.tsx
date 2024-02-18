@@ -12,7 +12,7 @@ test('Board: render', () => {
   render(
     <I18nextProvider i18n={i18next}>
       <Board squareList={new SquareList()} moveForward={() => {}} />
-    </I18nextProvider>
+    </I18nextProvider>,
   )
 
   const board = getBoard()
