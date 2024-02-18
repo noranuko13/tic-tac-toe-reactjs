@@ -12,8 +12,8 @@
   },
   "homepage": "https://noranuko13.github.io/tic-tac-toe-reactjs",
   "engines": {
-    "node": "18.14.2",
-    "npm": "9.5.0"
+    "node": "20.11.0",
+    "npm": "10.4.0"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
