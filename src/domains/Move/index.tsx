@@ -6,7 +6,7 @@ import { Sheet } from '../../partials'
 interface MoveProps {
   recordList: RecordList
   turn: Turn
-  jumpTo: any
+  jumpTo: (turnNumber: number) => void
 }
 
 export function Move(props: MoveProps) {
