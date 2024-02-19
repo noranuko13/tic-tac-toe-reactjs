@@ -24,7 +24,7 @@ jobs:
         env:
           CI: true
       - run: npm run build
-      - uses: JamesIves/github-pages-deploy-action@4.1.4
+      - uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
           single-commit: true
