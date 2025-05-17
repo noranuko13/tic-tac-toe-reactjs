@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { OrderType } from '../../constants'
-import { Button, TheadTh } from '../../elements'
+import { Button, TbodyTh, TheadTh } from '../../elements'
 import { RecordList, Turn } from '../../models'
 import './style.scss'
 
@@ -43,14 +43,14 @@ export function Sheet(props: SheetProps) {
         className={props.turn.eq(turnNumber) ? 'active' : ''}
         data-testid="line"
       >
-        <th scope="row">
+        <TbodyTh>
           <Button
             data-testid={'sheet-move-button'}
             onClick={() => props.jumpTo(turnNumber)}
           >
             #{turnNumber}
           </Button>
-        </th>
+        </TbodyTh>
         <td data-testid="text">
           {turnNumber !== 0 ? t('move.goto', { turnNumber }) : t('move.start')}
         </td>
