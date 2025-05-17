@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { OrderType } from '../../constants'
-import { Button, TbodyTh, TheadTh } from '../../elements'
+import { Button, TbodyTd, TbodyTh, TheadTh } from '../../elements'
 import { RecordList, Turn } from '../../models'
 import './style.scss'
 
@@ -51,10 +51,12 @@ export function Sheet(props: SheetProps) {
             #{turnNumber}
           </Button>
         </TbodyTh>
-        <td data-testid="text">
+        <TbodyTd data-testid="text">
           {turnNumber !== 0 ? t('move.goto', { turnNumber }) : t('move.start')}
-        </td>
-        <td data-testid="notation">{iterator.getNextRecord().getNotation()}</td>
+        </TbodyTd>
+        <TbodyTd data-testid="notation">
+          {iterator.getNextRecord().getNotation()}
+        </TbodyTd>
       </tr>,
     )
     iterator.advance()
