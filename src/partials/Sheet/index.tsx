@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next'
 import { OrderType } from '../../constants'
 import { Button, TbodyTd, TbodyTh, TheadTh } from '../../elements'
 import { RecordList, Turn } from '../../models'
-import './style.scss'
+import classNames from 'classnames'
 
 interface SheetProps {
   recordList: RecordList
@@ -40,7 +40,10 @@ export function Sheet(props: SheetProps) {
     tbodyTrs.push(
       <tr
         key={turnNumber}
-        className={props.turn.eq(turnNumber) ? 'active' : ''}
+        className={classNames(
+          'border-b border-t border-dashed border-stone-400',
+          props.turn.eq(turnNumber) ? 'active bg-stone-300' : '',
+        )}
         data-testid="line"
       >
         <TbodyTh>
@@ -63,7 +66,10 @@ export function Sheet(props: SheetProps) {
   }
 
   return (
-    <table data-testid="sheet" className="sheet">
+    <table
+      data-testid="sheet"
+      className={classNames('w-full whitespace-nowrap')}
+    >
       <thead>{theadTr}</thead>
       <tbody>{tbodyTrs}</tbody>
     </table>

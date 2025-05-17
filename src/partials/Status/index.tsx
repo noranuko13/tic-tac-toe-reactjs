@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Turn } from '../../models'
-import './style.scss'
+import classNames from 'classnames'
 
 interface StatusProps {
   turn: Turn
@@ -21,7 +21,13 @@ export function Status(props: StatusProps) {
   }
 
   return (
-    <h3 data-testid="status" className="status">
+    <h3
+      data-testid="status"
+      className={classNames(
+        'text-center text-lg',
+        'border-b border-t border-dashed border-stone-400',
+      )}
+    >
       {statusInnerText()}
     </h3>
   )
