@@ -4,7 +4,7 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { I18nextProvider } from 'react-i18next'
 import { Game } from './domains'
 import { i18next } from './i18n'
-import './index.scss'
+import './index.css'
 import { Footer, Header, Wrapper } from './partials'
 import reportWebVitals from './reportWebVitals'
 
