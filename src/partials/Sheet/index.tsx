@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { OrderType } from '../../constants'
-import { Button } from '../../elements'
+import { Button, TheadTh } from '../../elements'
 import { RecordList, Turn } from '../../models'
 import './style.scss'
 
@@ -17,16 +17,16 @@ export function Sheet(props: SheetProps) {
 
   const theadTr = (
     <tr>
-      <th scope="col">
+      <TheadTh>
         <Button
           data-testid={'sheet-sort-button'}
           onClick={() => props.sortRecords()}
         >
           #
         </Button>
-      </th>
-      <th scope="col">{t('move.description')}</th>
-      <th scope="col">{t('move.coordinate')}</th>
+      </TheadTh>
+      <TheadTh>{t('move.description')}</TheadTh>
+      <TheadTh>{t('move.coordinate')}</TheadTh>
     </tr>
   )
 
