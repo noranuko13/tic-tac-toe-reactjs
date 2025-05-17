@@ -8,7 +8,7 @@ export function Header() {
       <h1
         className={classNames(
           'py-1 text-xl font-semibold italic',
-          'border-b-4 border-t-4 border-double border-stone-400',
+          'border-t-4 border-b-4 border-double border-stone-400',
         )}
       >
         {t('title')}

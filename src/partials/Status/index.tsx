@@ -25,7 +25,7 @@ export function Status(props: StatusProps) {
       data-testid="status"
       className={classNames(
         'text-center text-lg',
-        'border-b border-t border-dashed border-stone-400',
+        'border-t border-b border-dashed border-stone-400',
       )}
     >
       {statusInnerText()}

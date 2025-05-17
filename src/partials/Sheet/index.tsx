@@ -41,7 +41,7 @@ export function Sheet(props: SheetProps) {
       <tr
         key={turnNumber}
         className={classNames(
-          'border-b border-t border-dashed border-stone-400',
+          'border-t border-b border-dashed border-stone-400',
           { 'active bg-stone-300': props.turn.eq(turnNumber) },
         )}
         data-testid="line"
