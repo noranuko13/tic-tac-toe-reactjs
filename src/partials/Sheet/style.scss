@@ -3,14 +3,14 @@
 
   thead {
     th {
-      @apply py-2 px-3;
+      @apply px-3 py-2;
       @apply bg-stone-300;
     }
   }
 
   tbody {
     tr {
-      @apply border-t border-b border-dashed border-stone-400;
+      @apply border-b border-t border-dashed border-stone-400;
 
       &.active {
         @apply bg-stone-300;
@@ -18,7 +18,7 @@
 
       th,
       td {
-        @apply py-2 px-3 text-center;
+        @apply px-3 py-2 text-center;
       }
     }
   }
