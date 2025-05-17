@@ -11,7 +11,7 @@ export function Wrapper(props: WrapperProps) {
       data-testid="wrapper"
       className={classNames('h-screen', 'bg-stone-200 text-stone-950')}
     >
-      <div className={classNames('container mx-auto max-w-lg py-5')}>
+      <div className={classNames('container mx-auto max-w-xl py-5')}>
         {props.children}
       </div>
     </div>
