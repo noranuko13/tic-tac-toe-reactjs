@@ -1,5 +1,8 @@
 # tic-tac-toe-reactjs
 
+> [!WARNING]
+> This repository is archived. No further updates will be made.
+
 
 ## Links
 
